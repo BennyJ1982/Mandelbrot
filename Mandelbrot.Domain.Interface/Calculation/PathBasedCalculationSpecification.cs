@@ -15,11 +15,6 @@
 
 		public IEnumerable<FractalPath> AdditionalOutput => this.additionalOutput;
 
-		public bool HasScaledResult(Rectangle<int> destinationRectangle)
-		{
-			return false;
-		}
-
 		public void AddAdditionalOutput(FractalPath path)
 		{
 			this.additionalOutput.Add(path);

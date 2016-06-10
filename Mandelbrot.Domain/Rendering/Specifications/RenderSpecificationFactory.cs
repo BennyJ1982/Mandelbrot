@@ -5,22 +5,14 @@ namespace Mandelbrot.Domain.Rendering.Specifications
 
 	public class RenderSpecificationFactory : IRenderSpecificationFactory
 	{
-		public IRenderSpecification CreateDefault(
-			ICalculationSpecification calculationSpecification,
-			Rectangle<int> destinationRectangle,
-			IFractalSettings settings,
-			IShader shader)
+		public IRenderSpecification CreateDefault(ICalculationSpecification calculationSpecification, IFractalSettings settings, IShader shader)
 		{
-			return new CalculatingRenderSpecification(calculationSpecification, destinationRectangle, settings, shader);
+			return new CalculatingRenderSpecification(calculationSpecification, settings, shader);
 		}
 
-		public IRenderSpecification CreateFromCalculatedPart(
-			CalculatedFractalPart part,
-			Rectangle<int> destinationRectangle,
-			IFractalSettings settings,
-			IShader shader)
+		public IRenderSpecification CreateFromCalculatedPart(CalculatedFractalPart part, IFractalSettings settings, IShader shader)
 		{
-			return new ShadingOnlyRenderSpecification(part, part.OriginalSpecification, destinationRectangle, settings, shader);
+			return new ShadingOnlyRenderSpecification(part, part.OriginalSpecification, settings, shader);
 		}
 	}
 }

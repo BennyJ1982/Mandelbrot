@@ -20,6 +20,15 @@
 			return new CalculatedFractalPart(new Rectangle<int>(0, 0, settings.ScreenWidth-1, settings.ScreenHeight-1), lines, specification);
 		}
 
+		public CalculatedFractalPart CalculatePart(
+			ICalculationSpecification specification,
+			IFractalSettings settings,
+			CancellationToken cancellationToken,
+			PreviewDelegate previewDelegate)
+		{
+			return this.CalculatePart(specification, settings, cancellationToken); // TODO
+		}
+
 		public bool CanCalculatePart(ICalculationSpecification specification)
 		{
 			return specification is PathBasedCalculationSpecification;

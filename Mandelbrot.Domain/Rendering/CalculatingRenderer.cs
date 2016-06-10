@@ -32,16 +32,26 @@
 
 		public IRenderResult Render(IRenderSpecification specification, IDrawingContext context, CancellationToken cancellationToken)
 		{
-			// first we calculate the fractal part
 			var calculator = this.calculatorRegistry.GetAll().First(c => c.CanCalculatePart(specification.CalculationSpecification));
-			var calculatedPart = calculator.CalculatePart(specification.CalculationSpecification, specification.Settings, cancellationToken);
+
+			// first we calculate the fractal part
+			var calculatedPart = calculator.CalculatePart(
+				specification.CalculationSpecification,
+				specification.Settings,
+				cancellationToken,
+				preview => this.ShadeResult(specification, context, cancellationToken, preview));
 
 			// then we defer shading and further rendering to a different renderer
-			var shadingSpec = this.renderSpecificationFactory.CreateFromCalculatedPart(
-				calculatedPart,
-				specification.DestinationRectangle,
-				specification.Settings,
-				specification.Shader);
+			return this.ShadeResult(specification, context, cancellationToken, calculatedPart);
+		}
+
+		private IRenderResult ShadeResult(
+			IRenderSpecification specification,
+			IDrawingContext context,
+			CancellationToken cancellationToken,
+			CalculatedFractalPart calculatedPart)
+		{
+			var shadingSpec = this.renderSpecificationFactory.CreateFromCalculatedPart(calculatedPart, specification.Settings, specification.Shader);
 
 			IRenderer shadingRenderer;
 			if (!this.rendererRegistry.TryGetMatchingRenderer(shadingSpec, out shadingRenderer))

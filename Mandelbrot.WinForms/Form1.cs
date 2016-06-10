@@ -5,7 +5,6 @@
 	using System.Threading.Tasks;
 	using System.Windows.Forms;
 	using Mandelbrot.Domain;
-	using Mandelbrot.Domain.Calculation;
 	using Mandelbrot.Domain.Calculation.Algorithms;
 	using Mandelbrot.Domain.Calculation.Shaders;
 	using Mandelbrot.Domain.Jobs;
@@ -13,7 +12,7 @@
 
 	public partial class Form1 : Form
 	{
-		private const int SectorWidth = 20;
+		private const int NumberOfSectors = 10;
 		private readonly IAlgorithmRegistry algorithmRegistry;
 
 		private readonly IShaderRegistry shaderRegistry;
@@ -98,8 +97,7 @@
 				return this.jobFactory.CreateFromResult(this.lastResult, settings, shader);
 			}
 
-//			return this.jobFactory.CreateWithPreview(settings, shader, SectorWidth);
-			return this.jobFactory.Create(settings, shader, SectorWidth);
+			return this.jobFactory.Create(settings, shader, NumberOfSectors);
 		}
 
 		private async void OnDraw(object sender, EventArgs e)

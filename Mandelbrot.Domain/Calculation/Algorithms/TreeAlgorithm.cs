@@ -33,8 +33,13 @@
 			IFractalSettings settings,
 			CancellationToken cancellationToken)
 		{
-			var line = (FractalLine)initialPath;
-			this.AddBranches(paths, line.Source, line.Destination, (int)initialPath.Value, settings.MaxIterations, cancellationToken);
+			this.AddBranches(
+				paths,
+				initialPath.GetFirstPoint(),
+				initialPath.GetSecondPoint(),
+				(int)initialPath.Value,
+				settings.MaxIterations,
+				cancellationToken);
 		}
 
 		private void AddBranches(
@@ -50,30 +55,23 @@
 				return;
 			}
 
-			paths.Add(new FractalLine((int)source.X, (int)source.Y, (int)destination.X, (int)destination.Y, iteration));
+			paths.Add(new FractalPath(iteration, source, destination));
 
-			foreach (var nextDestination in this.GetNextDestinations(source, destination, ++iteration, maxIterations))
+			if (++iteration >= maxIterations)
 			{
-				this.AddBranches(paths, destination, nextDestination, iteration, maxIterations, cancellationToken);
+				return;
 			}
-		}
 
-		private IEnumerable<Point<double>> GetNextDestinations(Point<double> a, Point<double> b, int iteration, int maxIterations)
-		{
-			var baseLength = Math.Sqrt((b.X - a.X) * (b.X - a.X) + (b.Y - a.Y) * (b.Y - a.Y));
-			var baseAngle = Geometry.GetAngle(b, a);
-
-			if (iteration >= maxIterations)
-			{
-				yield break;
-			}
+			var baseLength = Geometry.GetLineLength(source, destination);
+			var baseAngle = Geometry.GetLineAngle(destination, source);
 
 			var anglePerBranch = this.branchAngle / (this.numberOfBranches - 1);
 			var currentAngle = baseAngle - this.branchAngle / 2;
 
 			for (var branch = 0; branch < this.numberOfBranches; branch++)
 			{
-				yield return Geometry.GetPointFromAngle(b, baseLength * 0.66666, currentAngle);
+				var nextDestination = Geometry.GetPointFromAngle(destination, baseLength * 0.66666, currentAngle);
+				this.AddBranches(paths, destination, nextDestination, iteration, maxIterations, cancellationToken);
 				currentAngle += anglePerBranch;
 			}
 		}

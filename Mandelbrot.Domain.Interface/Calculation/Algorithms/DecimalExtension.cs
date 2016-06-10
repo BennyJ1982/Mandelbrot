@@ -20,7 +20,7 @@
 
 		public static decimal ScaleYToFractal(this decimal screenY, Rectangle<decimal> fractalRect, int screenHeight)
 		{
-			var fractalHeight = fractalRect.Bottom- fractalRect.Top;
+			var fractalHeight = fractalRect.Bottom - fractalRect.Top;
 			return fractalHeight / screenHeight * screenY + fractalRect.Top;
 		}
 

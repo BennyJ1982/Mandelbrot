@@ -5,16 +5,8 @@
 
 	public interface IRenderSpecificationFactory
 	{
-		IRenderSpecification CreateDefault(
-			ICalculationSpecification calculationSpecification,
-			Rectangle<int> destinationRectangle,
-			IFractalSettings settings,
-			IShader shader);
+		IRenderSpecification CreateDefault(ICalculationSpecification calculationSpecification, IFractalSettings settings, IShader shader);
 
-		IRenderSpecification CreateFromCalculatedPart(
-			CalculatedFractalPart part,
-			Rectangle<int> destinationRectangle,
-			IFractalSettings settings,
-			IShader shader);
+		IRenderSpecification CreateFromCalculatedPart(CalculatedFractalPart part, IFractalSettings settings, IShader shader);
 	}
 }

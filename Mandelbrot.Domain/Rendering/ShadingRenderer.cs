@@ -2,6 +2,7 @@
 {
 	using System.Drawing;
 	using System.Threading;
+	using Mandelbrot.Domain.Calculation;
 	using Mandelbrot.Domain.Output;
 	using Mandelbrot.Domain.Rendering.Specifications;
 
@@ -21,27 +22,30 @@
 
 		public IRenderResult Render(IRenderSpecification specification, IDrawingContext context, CancellationToken cancellationToken)
 		{
-			var calculatedPart = ((ShadingOnlyRenderSpecification)specification).CalculatedFractalPart;
-			using (var bitmap = this.renderer.CreateBitmap(calculatedPart, specification.Settings, specification.Shader))
+			var shadingSpecification = (ShadingOnlyRenderSpecification)specification;
+			var fractalPart = shadingSpecification.CalculatedFractalPart;
+
+			using (var bitmap = this.renderer.CreateBitmap(fractalPart, specification.Settings, specification.Shader))
 			{
-				if (specification.RenderScaled)
+				var scalableFractalPart =fractalPart as ScalableFractalPart;
+				if (scalableFractalPart!=null && !scalableFractalPart.ScaledScreenPosition.Equals(scalableFractalPart.ScreenPosition))
 				{
 					var targetRect = new Rectangle(
-						specification.DestinationRectangle.Left,
-						specification.DestinationRectangle.Top,
-						specification.DestinationRectangle.Right - specification.DestinationRectangle.Left + 1,
-						specification.DestinationRectangle.Bottom - specification.DestinationRectangle.Top + 1);
+						scalableFractalPart.ScaledScreenPosition.Left,
+						scalableFractalPart.ScaledScreenPosition.Top,
+						scalableFractalPart.ScaledScreenPosition.Right - scalableFractalPart.ScaledScreenPosition.Left + 1,
+						scalableFractalPart.ScaledScreenPosition.Bottom - scalableFractalPart.ScaledScreenPosition.Top + 1);
 
 					context.DrawBitmap(bitmap, targetRect);
 				}
 				else
 				{
-					var targetPoint = new Point(specification.DestinationRectangle.Left, specification.DestinationRectangle.Top);
+					var targetPoint = new Point(fractalPart.ScreenPosition.Left, fractalPart.ScreenPosition.Top);
 					context.DrawBitmapUnscaled(bitmap, targetPoint);
 				}
 			}
 
-			return new RenderResult(calculatedPart);
+			return new RenderResult(shadingSpecification.CalculatedFractalPart);
 		}
 	}
 }

@@ -5,12 +5,8 @@
 
 	public class CalculatingRenderSpecification : RenderSpecificationBase
 	{
-		public CalculatingRenderSpecification(
-			ICalculationSpecification calculationSpecification,
-			Rectangle<int> destinationRectangle,
-			IFractalSettings settings,
-			IShader shader)
-			: base(calculationSpecification, destinationRectangle, settings, shader)
+		public CalculatingRenderSpecification(ICalculationSpecification calculationSpecification, IFractalSettings settings, IShader shader)
+			: base(calculationSpecification, settings, shader)
 		{
 		}
 	}

@@ -18,7 +18,7 @@
 			return new Point<double>((a.X - b.X) / 2 + b.X, (a.Y - b.Y) / 2 + b.Y);
 		}
 
-		public static double GetAngle(Point<double> source, Point<double> destination)
+		public static double GetLineAngle(Point<double> source, Point<double> destination)
 		{
 			var xDiff = source.X - destination.X;
 			var yDiff = source.Y - destination.Y;
@@ -32,6 +32,11 @@
 			}
 
 			return angle;
+		}
+
+		public static double GetLineLength(Point<double> source, Point<double> destination)
+		{
+			return Math.Sqrt((destination.X - source.X) * (destination.X - source.X) + (destination.Y - source.Y) * (destination.Y - source.Y));
 		}
 	}
 }

@@ -6,6 +6,12 @@
 	{
 		CalculatedFractalPart CalculatePart(ICalculationSpecification specification, IFractalSettings settings, CancellationToken cancellationToken);
 
+		CalculatedFractalPart CalculatePart(
+			ICalculationSpecification specification,
+			IFractalSettings settings,
+			CancellationToken cancellationToken,
+			PreviewDelegate previewDelegate);
+
 		bool CanCalculatePart(ICalculationSpecification specification);
 	}
 }

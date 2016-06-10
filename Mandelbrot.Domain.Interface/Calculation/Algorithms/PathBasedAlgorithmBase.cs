@@ -45,7 +45,7 @@
 
 		protected static PathBasedCalculationSpecification[] CreateCalculationSpecifications(List<FractalPath> parts, bool removeRoot)
 		{
-			FractalPath root = null;
+			FractalPath? root = null;
 			if (removeRoot)
 			{
 				// remove root from the parts list and simply add as additional output
@@ -54,9 +54,9 @@
 			}
 
 			var specs = parts.Select(part => new PathBasedCalculationSpecification(part)).ToArray();
-			if (root != null)
+			if (root.HasValue)
 			{
-				specs.First().AddAdditionalOutput(root);
+				specs.First().AddAdditionalOutput(root.Value);
 			}
 
 			return specs;

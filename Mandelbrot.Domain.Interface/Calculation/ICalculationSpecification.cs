@@ -2,6 +2,5 @@
 {
 	public interface ICalculationSpecification
 	{
-		bool HasScaledResult(Rectangle<int> destinationRectangle);
 	}
 }

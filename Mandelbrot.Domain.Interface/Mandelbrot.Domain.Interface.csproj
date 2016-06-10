@@ -47,8 +47,7 @@
     <Compile Include="Calculation\Algorithms\PointBasedAlgorithmBase.cs" />
     <Compile Include="Calculation\CalculatedFractalPart.cs" />
     <Compile Include="Calculation\FractalPath.cs" />
-    <Compile Include="Calculation\FractalLine.cs" />
-    <Compile Include="Calculation\FractalPoint.cs" />
+    <Compile Include="Calculation\FractalPathExtensions.cs" />
     <Compile Include="Calculation\Algorithms\IAlgorithmRegistry.cs" />
     <Compile Include="Calculation\ICalculatorRegistry.cs" />
     <Compile Include="Calculation\ICalculationSpecification.cs" />
@@ -56,12 +55,13 @@
     <Compile Include="Calculation\IFractalCalculator.cs" />
     <Compile Include="Calculation\Algorithms\IPathBasedFractal.cs" />
     <Compile Include="Calculation\Algorithms\IPointBasedFractal.cs" />
-    <Compile Include="Calculation\IFractalPrimitive.cs" />
     <Compile Include="Calculation\PathBasedCalculationSpecification.cs" />
     <Compile Include="Calculation\PointBasedCalculationSpecification.cs" />
+    <Compile Include="Calculation\ScalableFractalPart.cs" />
     <Compile Include="Calculation\Shaders\IShader.cs" />
     <Compile Include="Calculation\Shaders\IShaderRegistry.cs" />
     <Compile Include="Calculation\Shaders\PaletteBasedShader.cs" />
+    <Compile Include="Calculation\PreviewDelegate.cs" />
     <Compile Include="FractalSettings.cs" />
     <Compile Include="IFractalCalculationSettings.cs" />
     <Compile Include="IFractalSettings.cs" />
@@ -82,6 +82,7 @@
     <Compile Include="Rendering\IRenderResult.cs" />
     <Compile Include="Rendering\IRenderSpecification.cs" />
     <Compile Include="Rendering\IRenderSpecificationFactory.cs" />
+    <Compile Include="Rendering\PointExtension.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

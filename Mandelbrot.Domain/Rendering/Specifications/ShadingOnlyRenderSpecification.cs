@@ -11,10 +11,9 @@
 		public ShadingOnlyRenderSpecification(
 			CalculatedFractalPart calculatedFractalPart,
 			ICalculationSpecification calculationSpecification,
-			Rectangle<int> destinationRectangle,
 			IFractalSettings settings,
 			IShader shader)
-			: base(calculationSpecification, destinationRectangle, settings, shader)
+			: base(calculationSpecification, settings, shader)
 		{
 			this.CalculatedFractalPart = calculatedFractalPart;
 		}
@@ -23,7 +22,6 @@
 			: this(
 				calculatedFractalPart,
 				originalSpecification.CalculationSpecification,
-				originalSpecification.DestinationRectangle,
 				originalSpecification.Settings,
 				originalSpecification.Shader)
 		{
