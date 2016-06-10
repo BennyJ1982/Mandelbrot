@@ -41,7 +41,7 @@
 
 				}
 			}
-
+			 
 			return new Job(settings, renderSpecs);
 		}
 
