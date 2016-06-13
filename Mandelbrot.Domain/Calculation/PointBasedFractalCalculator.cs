@@ -1,110 +1,50 @@
 ﻿namespace Mandelbrot.Domain.Calculation
 {
 	using System.Collections.Generic;
-	using System.Collections.ObjectModel;
 	using System.Linq;
-	using System.Threading;
-	using Mandelbrot.Domain.Calculation.Algorithms;
 
-	public class PointBasedFractalCalculator : IFractalCalculator
+	public class PointBasedFractalCalculator : PointBasedFractalCalculatorBase
 	{
-		public CalculatedFractalPart CalculatePart(
-			ICalculationSpecification specification,
-			IFractalSettings settings,
-			CancellationToken cancellationToken)
+		private readonly int minimimSizeForPreview;
+
+		public PointBasedFractalCalculator(int minimimSizeForPreview)
 		{
-			return this.CalculatePart(specification, settings, cancellationToken, null);
+			this.minimimSizeForPreview = minimimSizeForPreview;
 		}
 
-		public CalculatedFractalPart CalculatePart(
-			ICalculationSpecification specification,
-			IFractalSettings settings,
-			CancellationToken cancellationToken,
-			PreviewDelegate previewDelegate)
+		public override bool CanCalculatePart(ICalculationSpecification specification)
 		{
-			var rectangleToCalculate = ((PointBasedCalculationSpecification)specification).RectangleToCalculate;
-			var algorithm = (IPointBasedFractal)settings.Algorithm;
-			var points = new Collection<FractalPath>();
+			return specification is PointBasedCalculationSpecification && !(specification is ScaledPointBasedCalculationSpecification);
+		}
 
-			for (var x = rectangleToCalculate.Left; x <= rectangleToCalculate.Right; x++)
+		public override IEnumerable<ICalculationSpecification> SplitIntoPreviewParts(ICalculationSpecification specification)
+		{
+			var originalRectangle = ((PointBasedCalculationSpecification)specification).RectangleToCalculate;
+			var stages = ColumnCalculationOrder.GetDefault(originalRectangle.Left, originalRectangle.Right).ToArray().GroupBy((o => o.Level));
+
+			foreach(var stage in stages)
 			{
-				for (var y = rectangleToCalculate.Top; y <= rectangleToCalculate.Bottom; y++)
+
+				//if (column.Size < this.minimimSizeForPreview)
+				//{
+				//	foreach (var remainingColumn in order.Where(o => o.Level == column.Level))
+				//	{
+				//		var rect = new Rectangle<int>(remainingColumn.Left, originalRectangle.Top, remainingColumn.Right, originalRectangle.Bottom);
+				//		yield return new PointBasedCalculationSpecification(rect);
+				//	}
+
+				//	yield break;
+				//}
+
+
+				foreach (var column in stage)
 				{
-					var value = algorithm.CalculateSinglePoint(x, y, settings);
-					points.Add(new FractalPath(x - rectangleToCalculate.Left, y - rectangleToCalculate.Top, value));
+
+					var calculationRect = new Rectangle<int>(column.X, originalRectangle.Top, column.X, originalRectangle.Bottom);
+					var targetRect = new Rectangle<int>(column.Left, originalRectangle.Top, column.Right, originalRectangle.Bottom);
+					yield return new ScaledPointBasedCalculationSpecification(calculationRect, stage.Key, targetRect);
 				}
-
-				if (cancellationToken.IsCancellationRequested)
-				{
-					break;
-				}
-
-				ProvidePreview(previewDelegate, x, rectangleToCalculate, points, specification);
 			}
-
-			return new CalculatedFractalPart(rectangleToCalculate, points, specification);
-		}
-
-		public bool CanCalculatePart(ICalculationSpecification specification)
-		{
-			return specification is PointBasedCalculationSpecification;
-		}
-
-		private static void ProvidePreview(
-			PreviewDelegate previewDelegate,
-			int currentColumn,
-			Rectangle<int> rect,
-			IEnumerable<FractalPath> points,
-			ICalculationSpecification specification)
-		{
-			if (previewDelegate == null)
-			{
-				return;
-			}
-
-			if (currentColumn == rect.Left)
-			{
-				var previewPoints =
-					points.Where(p => (int)p.GetFirstPoint().X == currentColumn - rect.Left)
-					.Select(p => new FractalPath(0, p.GetFirstPoint().Y, p.Value));
-
-				var screenPosition = new Rectangle<int>(currentColumn, rect.Top, currentColumn, rect.Bottom);
-				previewDelegate(new ScalableFractalPart(screenPosition, previewPoints, specification, rect));
-			}
-			else if (currentColumn == (rect.Right - rect.Left + 1) / 2 + rect.Left)
-			{
-				// preview first 50%
-				var previewPoints =
-					points.Where(p => (int)p.GetFirstPoint().X <= currentColumn - rect.Left)
-						.Select(p => new FractalPath(p.GetFirstPoint().X, p.GetFirstPoint().Y, p.Value));
-
-				var screenPosition = new Rectangle<int>(rect.Left, rect.Top, currentColumn, rect.Bottom);
-				previewDelegate(new ScalableFractalPart(screenPosition, previewPoints, specification, screenPosition));
-
-				// extrapolate remaining
-				previewPoints =
-					points.Where(p => (int)p.GetFirstPoint().X == currentColumn - rect.Left)
-						.Select(p => new FractalPath(0, p.GetFirstPoint().Y, p.Value));
-
-				screenPosition = new Rectangle<int>(currentColumn + 1, rect.Top, currentColumn + 1, rect.Bottom);
-				var scaledPosition = new Rectangle<int>(screenPosition.Left, screenPosition.Top, rect.Right, rect.Bottom);
-				previewDelegate(new ScalableFractalPart(screenPosition, previewPoints, specification, scaledPosition));
-			}
-		}
-
-		//private IEnumerable<ColumnInfo> GetColumnDistributions(int left, int right)
-		//{
-		//	// TODO implement
-		//}
-
-		private class ColumnInfo
-		{
-			public ColumnInfo(int x)
-			{
-				this.X = x;
-			}
-
-			public int X { get; private set; }
 		}
 	}
 }

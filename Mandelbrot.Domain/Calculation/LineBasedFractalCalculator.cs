@@ -1,5 +1,6 @@
 ﻿namespace Mandelbrot.Domain.Calculation
 {
+	using System.Collections.Generic;
 	using System.Linq;
 	using System.Threading;
 	using Mandelbrot.Domain.Calculation.Algorithms;
@@ -20,18 +21,14 @@
 			return new CalculatedFractalPart(new Rectangle<int>(0, 0, settings.ScreenWidth-1, settings.ScreenHeight-1), lines, specification);
 		}
 
-		public CalculatedFractalPart CalculatePart(
-			ICalculationSpecification specification,
-			IFractalSettings settings,
-			CancellationToken cancellationToken,
-			PreviewDelegate previewDelegate)
-		{
-			return this.CalculatePart(specification, settings, cancellationToken); // TODO
-		}
-
 		public bool CanCalculatePart(ICalculationSpecification specification)
 		{
 			return specification is PathBasedCalculationSpecification;
+		}
+
+		public IEnumerable<ICalculationSpecification> SplitIntoPreviewParts(ICalculationSpecification specification)
+		{
+			return new[] { specification };
 		}
 	}
 }

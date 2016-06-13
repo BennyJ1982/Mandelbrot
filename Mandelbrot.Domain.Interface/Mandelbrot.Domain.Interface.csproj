@@ -57,7 +57,9 @@
     <Compile Include="Calculation\Algorithms\IPointBasedFractal.cs" />
     <Compile Include="Calculation\PathBasedCalculationSpecification.cs" />
     <Compile Include="Calculation\PointBasedCalculationSpecification.cs" />
+    <Compile Include="Calculation\PointBasedFractalCalculatorBase.cs" />
     <Compile Include="Calculation\ScalableFractalPart.cs" />
+    <Compile Include="Calculation\ScaledPointBasedCalculationSpecification.cs" />
     <Compile Include="Calculation\Shaders\IShader.cs" />
     <Compile Include="Calculation\Shaders\IShaderRegistry.cs" />
     <Compile Include="Calculation\Shaders\PaletteBasedShader.cs" />

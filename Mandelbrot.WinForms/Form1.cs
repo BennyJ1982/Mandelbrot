@@ -12,7 +12,7 @@
 
 	public partial class Form1 : Form
 	{
-		private const int NumberOfSectors = 10;
+		private const int NumberOfSectors = 8;
 		private readonly IAlgorithmRegistry algorithmRegistry;
 
 		private readonly IShaderRegistry shaderRegistry;

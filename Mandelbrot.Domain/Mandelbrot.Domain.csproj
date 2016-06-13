@@ -45,7 +45,9 @@
     <Compile Include="Calculation\CalculatorRegistry.cs" />
     <Compile Include="Calculation\Algorithms\Geometry.cs" />
     <Compile Include="Calculation\Algorithms\TreeAlgorithm.cs" />
+    <Compile Include="Calculation\ColumnCalculationOrder.cs" />
     <Compile Include="Calculation\LineBasedFractalCalculator.cs" />
+    <Compile Include="Calculation\ScaledPointBasedFractalCalculator.cs" />
     <Compile Include="Calculation\PointBasedFractalCalculator.cs" />
     <Compile Include="Calculation\Algorithms\JuliaAlgorithm.cs" />
     <Compile Include="Calculation\Algorithms\AlgorithmRegistry.cs" />

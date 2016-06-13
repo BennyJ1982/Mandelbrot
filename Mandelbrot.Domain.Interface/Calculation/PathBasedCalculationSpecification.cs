@@ -19,5 +19,7 @@
 		{
 			this.additionalOutput.Add(path);
 		}
+
+		public int DesiredExecutionRank => 0;
 	}
 }

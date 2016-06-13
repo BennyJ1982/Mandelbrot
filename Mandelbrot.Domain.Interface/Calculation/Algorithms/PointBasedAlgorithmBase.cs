@@ -15,7 +15,7 @@
 			{
 				var right = x + sectorWidth > screenWidth - 1 ? screenWidth - 1 : x + sectorWidth - 1;
 				var fractionBounds = new Rectangle<int>(x, 0, right, settings.ScreenHeight - 1);
-				yield return new PointBasedCalculationSpecification(fractionBounds);
+				yield return new PointBasedCalculationSpecification(fractionBounds, 0);
 			}
 		}
 	}
