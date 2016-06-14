@@ -18,7 +18,7 @@
 			var lines = algorithm.CalculatePaths(pathBasedSpec.InitialPath, settings, cancellationToken);
 			lines = lines.Union(pathBasedSpec.AdditionalOutput);
 
-			return new CalculatedFractalPart(new Rectangle<int>(0, 0, settings.ScreenWidth-1, settings.ScreenHeight-1), lines, specification);
+			return new CalculatedFractalPart(new Rectangle<int>(0, 0, settings.ScreenWidth - 1, settings.ScreenHeight - 1), lines);
 		}
 
 		public bool CanCalculatePart(ICalculationSpecification specification)

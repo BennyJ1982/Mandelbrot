@@ -94,7 +94,7 @@
 		{
 			if (this.lastResult != null && !this.lastResult.Cancelled && this.lastResult.Job.Settings.Equals(settings))
 			{
-				return this.jobFactory.CreateFromResult(this.lastResult, settings, shader);
+				return this.jobFactory.CreateFromResult(this.lastResult, settings, shader, NumberOfSectors);
 			}
 
 			return this.jobFactory.Create(settings, shader, NumberOfSectors);

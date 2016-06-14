@@ -12,9 +12,9 @@
 			this.lazyPalette= new Lazy<Color[]>(this.InitPalette);
 		}
 
-		public virtual Color GetColor(decimal mandelbrotValue, int maxIterations)
+		public virtual Color GetColor(double mandelbrotValue, int maxIterations)
 		{
-			var factor = (decimal)this.lazyPalette.Value.Length / maxIterations;
+			var factor = (double)this.lazyPalette.Value.Length / maxIterations;
 			var index = (int)(mandelbrotValue * factor);
 
 			return this.lazyPalette.Value[index];

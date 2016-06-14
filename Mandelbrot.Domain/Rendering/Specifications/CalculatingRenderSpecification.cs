@@ -6,8 +6,11 @@
 	public class CalculatingRenderSpecification : RenderSpecificationBase
 	{
 		public CalculatingRenderSpecification(ICalculationSpecification calculationSpecification, IFractalSettings settings, IShader shader)
-			: base(calculationSpecification, settings, shader)
+			: base(settings, shader)
 		{
+			this.CalculationSpecification = calculationSpecification;
 		}
+
+		public ICalculationSpecification CalculationSpecification { get; private set; }
 	}
 }

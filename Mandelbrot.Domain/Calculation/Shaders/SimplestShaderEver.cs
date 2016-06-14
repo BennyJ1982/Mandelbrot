@@ -4,9 +4,9 @@
 
 	public class SimplestShaderEver : IShader
 	{
-		public Color GetColor(decimal mandelbrotValue, int maxIterations)
+		public Color GetColor(double mandelbrotValue, int maxIterations)
 		{
-			var i = (decimal)255 / maxIterations;
+			var i = (double)255 / maxIterations;
 			var colorValue = (int)(mandelbrotValue * i);
 			return Color.FromArgb(colorValue, colorValue, colorValue);
 		}

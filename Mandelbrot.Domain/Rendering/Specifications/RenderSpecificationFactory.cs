@@ -12,7 +12,7 @@ namespace Mandelbrot.Domain.Rendering.Specifications
 
 		public IRenderSpecification CreateFromCalculatedPart(CalculatedFractalPart part, IFractalSettings settings, IShader shader)
 		{
-			return new ShadingOnlyRenderSpecification(part, part.OriginalSpecification, settings, shader);
+			return new ShadingOnlyRenderSpecification(part, settings, shader);
 		}
 	}
 }

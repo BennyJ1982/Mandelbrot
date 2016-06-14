@@ -42,7 +42,7 @@
 			Rectangle<int> rectangleToCalculate,
 			Collection<FractalPath> points)
 		{
-			return new CalculatedFractalPart(rectangleToCalculate, points, specification);
+			return new CalculatedFractalPart(rectangleToCalculate, points);
 		}
 	}
 }

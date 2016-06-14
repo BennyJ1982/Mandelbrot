@@ -4,6 +4,6 @@
 
 	public interface IShader
 	{
-		Color GetColor(decimal mandelbrotValue, int maxIterations);
+		Color GetColor(double mandelbrotValue, int maxIterations);
 	}
 }

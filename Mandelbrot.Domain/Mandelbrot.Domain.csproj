@@ -52,10 +52,9 @@
     <Compile Include="Calculation\Algorithms\JuliaAlgorithm.cs" />
     <Compile Include="Calculation\Algorithms\AlgorithmRegistry.cs" />
     <Compile Include="Calculation\Shaders\FireShader.cs" />
-    <Compile Include="Jobs\JobResult.cs" />
-    <Compile Include="Jobs\JobRunnerBase.cs" />
     <Compile Include="Jobs\ParallelForEachBasedRunner.cs" />
     <Compile Include="Jobs\Job.cs" />
+    <Compile Include="Jobs\ParallelLinqRunner.cs" />
     <Compile Include="Jobs\TaskBasedRunner.cs" />
     <Compile Include="Calculation\Algorithms\MandelbrotAlgorithm.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

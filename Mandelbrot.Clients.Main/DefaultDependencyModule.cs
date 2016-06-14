@@ -39,7 +39,7 @@
 
 		private static void RegisterCalculators(ICalculatorRegistry registry)
 		{
-			registry.RegisterFractalCalculator(new PointBasedFractalCalculator(3));
+			registry.RegisterFractalCalculator(new PointBasedFractalCalculator(5));
 			registry.RegisterFractalCalculator(new ScaledPointBasedFractalCalculator());
 			registry.RegisterFractalCalculator(new LineBasedFractalCalculator());
 		}

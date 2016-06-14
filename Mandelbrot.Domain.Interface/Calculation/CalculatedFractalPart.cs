@@ -5,20 +5,14 @@ namespace Mandelbrot.Domain.Calculation
 
 	public class CalculatedFractalPart
 	{
-		public CalculatedFractalPart(
-			Rectangle<int> screenPosition,
-			IEnumerable<FractalPath> paths,
-			ICalculationSpecification originalSpecification)
+		public CalculatedFractalPart(Rectangle<int> screenPosition, IEnumerable<FractalPath> paths)
 		{
 			this.ScreenPosition = screenPosition;
 			this.Paths = paths;
-			this.OriginalSpecification = originalSpecification;
 		}
 
 		public Rectangle<int> ScreenPosition { get; private set; }
 
 		public IEnumerable<FractalPath> Paths { get; private set; }
-
-		public ICalculationSpecification OriginalSpecification { get; private set; }
 	}
 }

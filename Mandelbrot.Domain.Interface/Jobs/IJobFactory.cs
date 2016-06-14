@@ -6,6 +6,6 @@
 	{
 		IJob Create(IFractalSettings settings, IShader shader, int numberOfSectors);
 
-		IJob CreateFromResult(IJobResult result, IFractalSettings settings, IShader shader);
+		IJob CreateFromResult(IJobResult result, IFractalSettings settings, IShader shader, int numberOfSectors);
 	}
 }

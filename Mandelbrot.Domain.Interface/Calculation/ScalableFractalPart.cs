@@ -4,12 +4,8 @@
 
 	public class ScalableFractalPart : CalculatedFractalPart
 	{
-		public ScalableFractalPart(
-			Rectangle<int> screenPosition,
-			IEnumerable<FractalPath> paths,
-			ICalculationSpecification originalSpecification,
-			Rectangle<int> scaledScreenPosition)
-			: base(screenPosition, paths, originalSpecification)
+		public ScalableFractalPart(Rectangle<int> screenPosition, IEnumerable<FractalPath> paths, Rectangle<int> scaledScreenPosition)
+			: base(screenPosition, paths)
 		{
 			this.ScaledScreenPosition = scaledScreenPosition;
 		}

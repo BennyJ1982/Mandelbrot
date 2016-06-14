@@ -25,10 +25,10 @@
 			var shadingSpecification = (ShadingOnlyRenderSpecification)specification;
 			var fractalPart = shadingSpecification.CalculatedFractalPart;
 
-			using (var bitmap = this.renderer.CreateBitmap(fractalPart, specification.Settings, specification.Shader))
+			using (var fastBitmap = this.renderer.CreateBitmap(fractalPart, specification.Settings, specification.Shader))
 			{
-				var scalableFractalPart =fractalPart as ScalableFractalPart;
-				if (scalableFractalPart!=null && !scalableFractalPart.ScaledScreenPosition.Equals(scalableFractalPart.ScreenPosition))
+				var scalableFractalPart = fractalPart as ScalableFractalPart;
+				if (scalableFractalPart != null && !scalableFractalPart.ScaledScreenPosition.Equals(scalableFractalPart.ScreenPosition))
 				{
 					var targetRect = new Rectangle(
 						scalableFractalPart.ScaledScreenPosition.Left,
@@ -36,12 +36,12 @@
 						scalableFractalPart.ScaledScreenPosition.Right - scalableFractalPart.ScaledScreenPosition.Left + 1,
 						scalableFractalPart.ScaledScreenPosition.Bottom - scalableFractalPart.ScaledScreenPosition.Top + 1);
 
-					context.DrawBitmap(bitmap, targetRect);
+					context.DrawBitmap(fastBitmap.Bitmap, targetRect);
 				}
 				else
 				{
 					var targetPoint = new Point(fractalPart.ScreenPosition.Left, fractalPart.ScreenPosition.Top);
-					context.DrawBitmapUnscaled(bitmap, targetPoint);
+					context.DrawBitmapUnscaled(fastBitmap.Bitmap, targetPoint);
 				}
 			}
 

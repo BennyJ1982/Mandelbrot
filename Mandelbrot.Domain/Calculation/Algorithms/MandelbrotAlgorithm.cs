@@ -6,7 +6,7 @@
 
 		public override Rectangle<decimal> DefaultScale => new Rectangle<decimal>(-2.5m, -1, 1, 1);
 
-		public override decimal CalculateSinglePoint(int x, int y, IFractalSettings settings)
+		public override double CalculateSinglePoint(int x, int y, IFractalSettings settings)
 		{
 			var scaledX = this.ScaleX(x, settings);
 			var scaledY = this.ScaleY(y, settings);

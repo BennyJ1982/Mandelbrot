@@ -5,8 +5,6 @@
 
 	public interface IRenderSpecification
 	{
-		ICalculationSpecification CalculationSpecification{ get; }
-
 		IFractalSettings Settings { get; }
 
 		IShader Shader { get; }

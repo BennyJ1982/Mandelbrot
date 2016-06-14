@@ -8,23 +8,10 @@
 	/// </summary>
 	public class ShadingOnlyRenderSpecification : RenderSpecificationBase
 	{
-		public ShadingOnlyRenderSpecification(
-			CalculatedFractalPart calculatedFractalPart,
-			ICalculationSpecification calculationSpecification,
-			IFractalSettings settings,
-			IShader shader)
-			: base(calculationSpecification, settings, shader)
+		public ShadingOnlyRenderSpecification(CalculatedFractalPart calculatedFractalPart, IFractalSettings settings, IShader shader)
+			: base(settings, shader)
 		{
 			this.CalculatedFractalPart = calculatedFractalPart;
-		}
-
-		public ShadingOnlyRenderSpecification(CalculatedFractalPart calculatedFractalPart, IRenderSpecification originalSpecification)
-			: this(
-				calculatedFractalPart,
-				originalSpecification.CalculationSpecification,
-				originalSpecification.Settings,
-				originalSpecification.Shader)
-		{
 		}
 
 		public CalculatedFractalPart CalculatedFractalPart { get; }

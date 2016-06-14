@@ -35,7 +35,8 @@ namespace Mandelbrot.Domain.Jobs
 						break;
 					}
 
-					var task = Task.Factory.StartNew(() => this.Render(job, enumerator.Current, context, cancellationToken), cancellationToken);
+					var specification= enumerator.Current;
+					var task = Task.Factory.StartNew(() => this.Render(job, specification, context, cancellationToken), cancellationToken);
 					runningTasks.Add(task);
 				}
 

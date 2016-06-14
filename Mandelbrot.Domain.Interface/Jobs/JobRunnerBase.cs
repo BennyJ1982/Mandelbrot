@@ -18,18 +18,28 @@
 
 		public async Task<IJobResult> ExecuteAsync(IJob job, IScreen screen, int maxDegreeOfParallelism, CancellationToken cancellationToken)
 		{
-			var results = new List<IRenderResult>();
-
 			using (var context = screen.GetDrawingContext())
 			{
-				foreach (var stage in job.Stages)
-				{
-					var stageResults = await this.ExecuteStageAsync(job, stage, context, maxDegreeOfParallelism, cancellationToken);
-					results.AddRange(stageResults);
-				}
+				var results = await this.ExecuteJobAsync(job, maxDegreeOfParallelism, cancellationToken, context);
+				return new JobResult(job, results, cancellationToken.IsCancellationRequested);
+			}
+		}
+
+		protected virtual async Task<List<IRenderResult>> ExecuteJobAsync(
+			IJob job,
+			int maxDegreeOfParallelism,
+			CancellationToken cancellationToken,
+			IDrawingContext context)
+		{
+			var results = new List<IRenderResult>();
+
+			foreach (var stage in job.Stages)
+			{
+				var stageResults = await this.ExecuteStageAsync(job, stage, context, maxDegreeOfParallelism, cancellationToken);
+				results.AddRange(stageResults);
 			}
 
-			return new JobResult(job, results, cancellationToken.IsCancellationRequested);
+			return results;
 		}
 
 		protected abstract Task<IEnumerable<IRenderResult>> ExecuteStageAsync(

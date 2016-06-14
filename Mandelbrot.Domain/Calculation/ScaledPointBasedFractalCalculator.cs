@@ -22,7 +22,7 @@
 			Collection<FractalPath> points)
 		{
 			var destinationRect = ((ScaledPointBasedCalculationSpecification)specification).DesinationRectangle;
-			return new ScalableFractalPart(rectangleToCalculate, points, specification, destinationRect);
+			return new ScalableFractalPart(rectangleToCalculate, points, destinationRect);
 		}
 	}
 }

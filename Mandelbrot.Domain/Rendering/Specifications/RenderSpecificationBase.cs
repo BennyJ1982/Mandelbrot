@@ -5,14 +5,11 @@
 
 	public abstract class RenderSpecificationBase : IRenderSpecification
 	{
-		protected RenderSpecificationBase(ICalculationSpecification calculationSpecification, IFractalSettings settings, IShader shader)
+		protected RenderSpecificationBase(IFractalSettings settings, IShader shader)
 		{
-			this.CalculationSpecification = calculationSpecification;
 			this.Settings = settings;
 			this.Shader = shader;
 		}
-
-		public ICalculationSpecification CalculationSpecification { get; private set; }
 
 		public IFractalSettings Settings { get; private set; }
 

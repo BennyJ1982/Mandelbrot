@@ -20,26 +20,26 @@
 		public override IEnumerable<ICalculationSpecification> SplitIntoPreviewParts(ICalculationSpecification specification)
 		{
 			var originalRectangle = ((PointBasedCalculationSpecification)specification).RectangleToCalculate;
-			var stages = ColumnCalculationOrder.GetDefault(originalRectangle.Left, originalRectangle.Right).ToArray().GroupBy((o => o.Level));
+			var order = ColumnCalculationOrder.GetDefault(originalRectangle.Left, originalRectangle.Right).ToArray();
+			var stages = order.GroupBy((o => o.Level)).ToArray();
 
-			foreach(var stage in stages)
+			var firstStageWithNoPreviewColumns = stages.FirstOrDefault(s => s.Any(c => c.Size < this.minimimSizeForPreview));
+			foreach (var stage in stages)
 			{
+				if (stage == firstStageWithNoPreviewColumns)
+				{
+					// columns in this stage are too small, hence ignore all further child stages (no more previews)
+					foreach (var column in stage)
+					{
+						var rect = new Rectangle<int>(column.Left, originalRectangle.Top, column.Right , originalRectangle.Bottom);
+						yield return new PointBasedCalculationSpecification(rect, stage.Key);
+					}
 
-				//if (column.Size < this.minimimSizeForPreview)
-				//{
-				//	foreach (var remainingColumn in order.Where(o => o.Level == column.Level))
-				//	{
-				//		var rect = new Rectangle<int>(remainingColumn.Left, originalRectangle.Top, remainingColumn.Right, originalRectangle.Bottom);
-				//		yield return new PointBasedCalculationSpecification(rect);
-				//	}
-
-				//	yield break;
-				//}
-
+					yield break;
+				}
 
 				foreach (var column in stage)
 				{
-
 					var calculationRect = new Rectangle<int>(column.X, originalRectangle.Top, column.X, originalRectangle.Bottom);
 					var targetRect = new Rectangle<int>(column.Left, originalRectangle.Top, column.Right, originalRectangle.Bottom);
 					yield return new ScaledPointBasedCalculationSpecification(calculationRect, stage.Key, targetRect);

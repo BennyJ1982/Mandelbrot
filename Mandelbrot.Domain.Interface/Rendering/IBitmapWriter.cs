@@ -6,6 +6,6 @@
 
 	public interface IBitmapWriter
 	{
-		Bitmap CreateBitmap(CalculatedFractalPart calculatedFractalPart, IFractalSettings settings, IShader shader);
+		FastBitmap CreateBitmap(CalculatedFractalPart calculatedFractalPart, IFractalSettings settings, IShader shader);
 	}
 }
