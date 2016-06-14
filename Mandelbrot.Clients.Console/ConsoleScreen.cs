@@ -1,7 +1,7 @@
 ﻿namespace Mandelbrot.Clients.Console
 {
 	using System;
-	using Mandelbrot.Domain.Output;
+	using Mandelbrot.Domain.Rendering.Output;
 
 	public class ConsoleScreen : IScreen
 	{

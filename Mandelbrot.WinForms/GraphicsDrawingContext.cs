@@ -2,7 +2,7 @@
 {
 	using System;
 	using System.Drawing;
-	using Mandelbrot.Domain.Output;
+	using Mandelbrot.Domain.Rendering.Output;
 
 	public class GraphicsDrawingContext : IDrawingContext
 	{

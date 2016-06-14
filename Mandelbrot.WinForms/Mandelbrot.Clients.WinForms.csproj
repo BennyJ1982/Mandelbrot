@@ -103,9 +103,21 @@
       <Project>{01048660-60e3-46cb-a279-158871b7a1fe}</Project>
       <Name>Mandelbrot.Clients.Main</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Mandelbrot.Domain.Calculation.Interface\Mandelbrot.Domain.Calculation.Interface.csproj">
+      <Project>{EB660F3D-E5F5-48C8-855C-2D1C0385EE5A}</Project>
+      <Name>Mandelbrot.Domain.Calculation.Interface</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Mandelbrot.Domain.Interface\Mandelbrot.Domain.Interface.csproj">
       <Project>{2C90D3C7-BD33-448F-8FA4-2E772AD0D133}</Project>
       <Name>Mandelbrot.Domain.Interface</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Mandelbrot.Domain.Jobs.Interface\Mandelbrot.Domain.Jobs.Interface.csproj">
+      <Project>{A0631B0C-BD7D-42D2-996B-1360E17756AC}</Project>
+      <Name>Mandelbrot.Domain.Jobs.Interface</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Mandelbrot.Domain.Rendering.Interface\Mandelbrot.Domain.Rendering.Interface.csproj">
+      <Project>{FBDEF0A3-A283-479C-80BF-7AA7B77027A7}</Project>
+      <Name>Mandelbrot.Domain.Rendering.Interface</Name>
     </ProjectReference>
     <ProjectReference Include="..\Mandelbrot\Mandelbrot.csproj">
       <Project>{8AB3FCAE-3D99-4E45-B8CF-349A2CF6CEAE}</Project>

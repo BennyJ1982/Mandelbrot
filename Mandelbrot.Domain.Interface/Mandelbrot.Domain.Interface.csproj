@@ -41,54 +41,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Calculation\Algorithms\AlgorithmBase.cs" />
-    <Compile Include="Calculation\Algorithms\DecimalExtension.cs" />
-    <Compile Include="Calculation\Algorithms\PathBasedAlgorithmBase.cs" />
-    <Compile Include="Calculation\Algorithms\PointBasedAlgorithmBase.cs" />
-    <Compile Include="Calculation\CalculatedFractalPart.cs" />
-    <Compile Include="Calculation\FractalPath.cs" />
-    <Compile Include="Calculation\FractalPathExtensions.cs" />
-    <Compile Include="Calculation\Algorithms\IAlgorithmRegistry.cs" />
-    <Compile Include="Calculation\ICalculatorRegistry.cs" />
-    <Compile Include="Calculation\ICalculationSpecification.cs" />
-    <Compile Include="Calculation\Algorithms\IFractalAlgorithm.cs" />
-    <Compile Include="Calculation\IFractalCalculator.cs" />
-    <Compile Include="Calculation\Algorithms\IPathBasedFractal.cs" />
-    <Compile Include="Calculation\Algorithms\IPointBasedFractal.cs" />
-    <Compile Include="Calculation\PathBasedCalculationSpecification.cs" />
-    <Compile Include="Calculation\PointBasedCalculationSpecification.cs" />
-    <Compile Include="Calculation\PointBasedFractalCalculatorBase.cs" />
-    <Compile Include="Calculation\ScalableFractalPart.cs" />
-    <Compile Include="Calculation\ScaledPointBasedCalculationSpecification.cs" />
-    <Compile Include="Calculation\Shaders\IShader.cs" />
-    <Compile Include="Calculation\Shaders\IShaderRegistry.cs" />
-    <Compile Include="Calculation\Shaders\PaletteBasedShader.cs" />
-    <Compile Include="Calculation\PreviewDelegate.cs" />
-    <Compile Include="FractalSettings.cs" />
-    <Compile Include="IFractalCalculationSettings.cs" />
-    <Compile Include="IFractalSettings.cs" />
+    <Compile Include="FractalPath.cs" />
+    <Compile Include="FractalPathExtensions.cs" />
     <Compile Include="IMandelbrotScale.cs" />
-    <Compile Include="Jobs\Extensions.cs" />
-    <Compile Include="Jobs\IJob.cs" />
-    <Compile Include="Jobs\IJobFactory.cs" />
-    <Compile Include="Jobs\IJobResult.cs" />
-    <Compile Include="Jobs\IJobRunner.cs" />
-    <Compile Include="Jobs\JobResult.cs" />
-    <Compile Include="Jobs\JobRunnerBase.cs" />
-    <Compile Include="Output\IDrawingContext.cs" />
-    <Compile Include="Output\IScreen.cs" />
-    <Compile Include="Output\ScreenExtension.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Point.cs" />
     <Compile Include="Rectangle.cs" />
-    <Compile Include="Rendering\FastBitmap.cs" />
-    <Compile Include="Rendering\IBitmapWriter.cs" />
-    <Compile Include="Rendering\IRenderer.cs" />
-    <Compile Include="Rendering\IRendererRegistry.cs" />
-    <Compile Include="Rendering\IRenderResult.cs" />
-    <Compile Include="Rendering\IRenderSpecification.cs" />
-    <Compile Include="Rendering\IRenderSpecificationFactory.cs" />
-    <Compile Include="Rendering\PointExtension.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -41,43 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Calculation\Algorithms\SierpinskiTriangleAlgorithm.cs" />
-    <Compile Include="Calculation\CalculatorRegistry.cs" />
-    <Compile Include="Calculation\Algorithms\Geometry.cs" />
-    <Compile Include="Calculation\Algorithms\TreeAlgorithm.cs" />
-    <Compile Include="Calculation\ColumnCalculationOrder.cs" />
-    <Compile Include="Calculation\LineBasedFractalCalculator.cs" />
-    <Compile Include="Calculation\ScaledPointBasedFractalCalculator.cs" />
-    <Compile Include="Calculation\PointBasedFractalCalculator.cs" />
-    <Compile Include="Calculation\Algorithms\JuliaAlgorithm.cs" />
-    <Compile Include="Calculation\Algorithms\AlgorithmRegistry.cs" />
-    <Compile Include="Calculation\Shaders\FireShader.cs" />
-    <Compile Include="Jobs\ParallelForEachBasedRunner.cs" />
-    <Compile Include="Jobs\Job.cs" />
-    <Compile Include="Jobs\ParallelLinqRunner.cs" />
-    <Compile Include="Jobs\TaskBasedRunner.cs" />
-    <Compile Include="Calculation\Algorithms\MandelbrotAlgorithm.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Rendering\LazyGraphics.cs" />
-    <Compile Include="Rendering\PenCache.cs" />
-    <Compile Include="Rendering\RenderResult.cs" />
-    <Compile Include="Rendering\ShadingRenderer.cs" />
-    <Compile Include="Rendering\RendererRegistry.cs" />
-    <Compile Include="Rendering\Specifications\RenderSpecificationFactory.cs" />
-    <Compile Include="Rendering\Specifications\ShadingOnlyRenderSpecification.cs" />
-    <Compile Include="Rendering\Specifications\RenderSpecificationBase.cs" />
-    <Compile Include="Rendering\BitmapWriter.cs" />
-    <Compile Include="Rendering\Specifications\CalculatingRenderSpecification.cs" />
-    <Compile Include="Jobs\JobFactory.cs" />
-    <Compile Include="Rendering\CalculatingRenderer.cs" />
-    <Compile Include="Calculation\Shaders\DefaultEscapeTimeShader.cs" />
-    <Compile Include="Calculation\Shaders\ShaderRegistry.cs" />
-    <Compile Include="Calculation\Shaders\SimplestShaderEver.cs" />
-    <Compile Include="Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Resources.resx</DependentUpon>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Mandelbrot.Domain.Interface\Mandelbrot.Domain.Interface.csproj">
@@ -86,16 +50,9 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Resources.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\FirePalette.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\fire_palette.png" />
+    <Folder Include="Calculation\" />
+    <Folder Include="Jobs\" />
+    <Folder Include="Rendering\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

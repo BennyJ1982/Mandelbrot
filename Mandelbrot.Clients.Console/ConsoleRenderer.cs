@@ -4,10 +4,11 @@
 	using System.Threading;
 	using System.Threading.Tasks;
 	using Mandelbrot.Domain;
+	using Mandelbrot.Domain.Calculation;
 	using Mandelbrot.Domain.Calculation.Algorithms;
-	using Mandelbrot.Domain.Calculation.Shaders;
 	using Mandelbrot.Domain.Jobs;
-	using Mandelbrot.Domain.Output;
+	using Mandelbrot.Domain.Rendering.Output;
+	using Mandelbrot.Domain.Rendering.Shaders;
 
 	public class ConsoleRenderer
 	{

@@ -51,13 +51,33 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Mandelbrot.Domain.Calculation.Interface\Mandelbrot.Domain.Calculation.Interface.csproj">
+      <Project>{EB660F3D-E5F5-48C8-855C-2D1C0385EE5A}</Project>
+      <Name>Mandelbrot.Domain.Calculation.Interface</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Mandelbrot.Domain.Calculation\Mandelbrot.Domain.Calculation.csproj">
+      <Project>{FCCED658-4590-489E-9508-6C352FEDC1A3}</Project>
+      <Name>Mandelbrot.Domain.Calculation</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Mandelbrot.Domain.Interface\Mandelbrot.Domain.Interface.csproj">
       <Project>{2C90D3C7-BD33-448F-8FA4-2E772AD0D133}</Project>
       <Name>Mandelbrot.Domain.Interface</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Mandelbrot.Domain\Mandelbrot.Domain.csproj">
-      <Project>{2bf16951-9593-4e0a-a424-2719374286f9}</Project>
-      <Name>Mandelbrot.Domain</Name>
+    <ProjectReference Include="..\Mandelbrot.Domain.Jobs.Interface\Mandelbrot.Domain.Jobs.Interface.csproj">
+      <Project>{A0631B0C-BD7D-42D2-996B-1360E17756AC}</Project>
+      <Name>Mandelbrot.Domain.Jobs.Interface</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Mandelbrot.Domain.Jobs\Mandelbrot.Domain.Jobs.csproj">
+      <Project>{71CBB01C-47FC-4CA8-8CE8-FAF2F99A6925}</Project>
+      <Name>Mandelbrot.Domain.Jobs</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Mandelbrot.Domain.Rendering.Interface\Mandelbrot.Domain.Rendering.Interface.csproj">
+      <Project>{FBDEF0A3-A283-479C-80BF-7AA7B77027A7}</Project>
+      <Name>Mandelbrot.Domain.Rendering.Interface</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Mandelbrot.Domain.Rendering\Mandelbrot.Domain.Rendering.csproj">
+      <Project>{06E41734-61DB-44C1-B13C-A0E559144B21}</Project>
+      <Name>Mandelbrot.Domain.Rendering</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

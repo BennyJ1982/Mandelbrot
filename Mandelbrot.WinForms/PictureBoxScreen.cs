@@ -2,7 +2,7 @@
 {
 	using System.Drawing.Drawing2D;
 	using System.Windows.Forms;
-	using Mandelbrot.Domain.Output;
+	using Mandelbrot.Domain.Rendering.Output;
 
 	/// <summary>
 	/// A PictureBox that implements the IScreen interface

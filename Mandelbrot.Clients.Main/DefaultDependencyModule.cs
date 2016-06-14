@@ -2,9 +2,11 @@
 {
 	using Mandelbrot.Domain.Calculation;
 	using Mandelbrot.Domain.Calculation.Algorithms;
-	using Mandelbrot.Domain.Calculation.Shaders;
+	using Mandelbrot.Domain.Calculation.Calculators;
 	using Mandelbrot.Domain.Jobs;
 	using Mandelbrot.Domain.Rendering;
+	using Mandelbrot.Domain.Rendering.Bitmaps;
+	using Mandelbrot.Domain.Rendering.Shaders;
 	using Mandelbrot.Domain.Rendering.Specifications;
 	using Ninject;
 	using Ninject.Activation;
