@@ -29,6 +29,8 @@
 			this.Bind<IBitmapWriter>().To<BitmapWriter>().InSingletonScope();
 			this.Bind<IRenderer>().To<ShadingRenderer>().InSingletonScope();
 			this.Bind<IRenderer>().To<CalculatingRenderer>().InSingletonScope();
+
+			this.Bind<IApplicationContextFactory>().To<ApplicationContextFactory>();
 		}
 
 		private static void RegisterFractalAlgorithms(IAlgorithmRegistry registry)
@@ -43,7 +45,7 @@
 		{
 			registry.RegisterFractalCalculator(new PointBasedFractalCalculator(5));
 			registry.RegisterFractalCalculator(new ScaledPointBasedFractalCalculator());
-			registry.RegisterFractalCalculator(new LineBasedFractalCalculator());
+			registry.RegisterFractalCalculator(new PathBasedFractalCalculator());
 		}
 
 		private static void RegisterShaders(IShaderRegistry registry)

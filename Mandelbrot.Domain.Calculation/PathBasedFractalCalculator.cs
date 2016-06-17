@@ -7,7 +7,7 @@
 	using Mandelbrot.Domain.Calculation.Calculators;
 	using Mandelbrot.Domain.Calculation.Specifications;
 
-	public class LineBasedFractalCalculator : IFractalCalculator
+	public class PathBasedFractalCalculator : IFractalCalculator
 	{
 		public CalculatedFractalPart CalculatePart(
 			ICalculationSpecification specification,

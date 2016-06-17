@@ -48,7 +48,7 @@
     <Compile Include="Algorithms\TreeAlgorithm.cs" />
     <Compile Include="CalculatorRegistry.cs" />
     <Compile Include="ColumnCalculationOrder.cs" />
-    <Compile Include="LineBasedFractalCalculator.cs" />
+    <Compile Include="PathBasedFractalCalculator.cs" />
     <Compile Include="PointBasedFractalCalculator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ScaledPointBasedFractalCalculator.cs" />

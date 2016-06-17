@@ -149,6 +149,7 @@
 			this.shaderComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
 			this.shaderComboBox.Name = "shaderComboBox";
 			this.shaderComboBox.Size = new System.Drawing.Size(121, 25);
+			this.shaderComboBox.SelectedIndexChanged += new System.EventHandler(this.OnShaderChanged);
 			// 
 			// toolStripLabel2
 			// 
@@ -173,6 +174,7 @@
             "10000"});
 			this.iterationsComboBox.Name = "iterationsComboBox";
 			this.iterationsComboBox.Size = new System.Drawing.Size(121, 25);
+			this.iterationsComboBox.SelectedIndexChanged += new System.EventHandler(this.OnIterationsChanged);
 			// 
 			// Form1
 			// 
