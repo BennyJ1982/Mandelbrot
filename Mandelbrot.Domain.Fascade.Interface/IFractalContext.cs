@@ -1,14 +1,13 @@
-﻿namespace Mandelbrot.UI
+﻿namespace Mandelbrot.Domain.Fascade
 {
 	using System;
 	using System.Threading.Tasks;
-	using Mandelbrot.Domain;
 	using Mandelbrot.Domain.Calculation.Algorithms;
 	using Mandelbrot.Domain.Jobs;
 	using Mandelbrot.Domain.Rendering.Output;
 	using Mandelbrot.Domain.Rendering.Shaders;
 
-	public interface IApplicationContext
+	public interface IFractalContext
 	{
 		Rectangle<decimal> CurrentFractalRect { get; set; }
 

@@ -4,19 +4,19 @@
 	using System.Threading.Tasks;
 	using Mandelbrot.Domain;
 	using Mandelbrot.Domain.Calculation.Algorithms;
+	using Mandelbrot.Domain.Fascade;
 	using Mandelbrot.Domain.Rendering.Shaders;
-	using Mandelbrot.UI;
 
 	public class ConsoleRenderer
 	{
 		private readonly ConsoleScreen screen;
 
-		private readonly IApplicationContext context;
+		private readonly IFractalContext context;
 
 		public ConsoleRenderer(
 			IAlgorithmRegistry algorithmRegistry,
 			IShaderRegistry shaderRegistry,
-			IApplicationContextFactory contextFactory,
+			IFractalContextFactory contextFactory,
 			ConsoleScreen screen)
 		{
 			this.screen = screen;

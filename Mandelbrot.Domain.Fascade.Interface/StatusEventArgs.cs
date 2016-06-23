@@ -1,4 +1,4 @@
-﻿namespace Mandelbrot.UI
+﻿namespace Mandelbrot.Domain.Fascade
 {
 	using System;
 

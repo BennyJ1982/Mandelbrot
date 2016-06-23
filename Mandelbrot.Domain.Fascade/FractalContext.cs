@@ -1,17 +1,15 @@
-namespace Mandelbrot.Clients.Main
+namespace Mandelbrot.Domain.Fascade
 {
 	using System;
 	using System.Threading;
 	using System.Threading.Tasks;
-	using Mandelbrot.Domain;
 	using Mandelbrot.Domain.Calculation;
 	using Mandelbrot.Domain.Calculation.Algorithms;
 	using Mandelbrot.Domain.Jobs;
 	using Mandelbrot.Domain.Rendering.Output;
 	using Mandelbrot.Domain.Rendering.Shaders;
-	using Mandelbrot.UI;
 
-	public class ApplicationContext : IApplicationContext
+	public class FractalContext : IFractalContext
 	{
 		private readonly int maxDegreeOfParalellelism;
 
@@ -21,7 +19,7 @@ namespace Mandelbrot.Clients.Main
 
 		private CancellationTokenSource cancellationTokenSource;
 
-		public ApplicationContext(IJobFactory jobFactory, IJobRunner jobRunner, int maxDegreeOfParalellelism)
+		public FractalContext(IJobFactory jobFactory, IJobRunner jobRunner, int maxDegreeOfParalellelism)
 		{
 			this.jobFactory = jobFactory;
 			this.jobRunner = jobRunner;

@@ -52,6 +52,10 @@
       <Project>{EB660F3D-E5F5-48C8-855C-2D1C0385EE5A}</Project>
       <Name>Mandelbrot.Domain.Calculation.Interface</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Mandelbrot.Domain.Fascade.Interface\Mandelbrot.Domain.Fascade.Interface.csproj">
+      <Project>{2EB5A663-F29D-487A-B27E-0E19B8D32343}</Project>
+      <Name>Mandelbrot.Domain.Fascade.Interface</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Mandelbrot.Domain.Rendering.Interface\Mandelbrot.Domain.Rendering.Interface.csproj">
       <Project>{FBDEF0A3-A283-479C-80BF-7AA7B77027A7}</Project>
       <Name>Mandelbrot.Domain.Rendering.Interface</Name>

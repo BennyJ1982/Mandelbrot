@@ -2,11 +2,12 @@
 {
 	using System.Threading.Tasks;
 	using Mandelbrot.Domain;
+	using Mandelbrot.Domain.Fascade;
 	using Mandelbrot.Domain.Rendering.Output;
 
 	public class ZoomInAction : IAction
 	{
-		private readonly IApplicationContext context;
+		private readonly IFractalContext context;
 
 		private readonly Rectangle<int> selection;
 
@@ -14,7 +15,7 @@
 
 		private Rectangle<decimal> oldFractalRect;
 
-		public ZoomInAction(IApplicationContext context, Rectangle<int> selection, IScreen screen)
+		public ZoomInAction(IFractalContext context, Rectangle<int> selection, IScreen screen)
 		{
 			this.context = context;
 			this.selection = selection;

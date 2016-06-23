@@ -3,12 +3,12 @@
 	using Mandelbrot.Domain.Calculation;
 	using Mandelbrot.Domain.Calculation.Algorithms;
 	using Mandelbrot.Domain.Calculation.Calculators;
+	using Mandelbrot.Domain.Fascade;
 	using Mandelbrot.Domain.Jobs;
 	using Mandelbrot.Domain.Rendering;
 	using Mandelbrot.Domain.Rendering.Bitmaps;
 	using Mandelbrot.Domain.Rendering.Shaders;
 	using Mandelbrot.Domain.Rendering.Specifications;
-	using Mandelbrot.UI;
 	using Mandelbrot.UI.Actions;
 	using Ninject;
 	using Ninject.Activation;
@@ -32,7 +32,7 @@
 			this.Bind<IRenderer>().To<ShadingRenderer>().InSingletonScope();
 			this.Bind<IRenderer>().To<CalculatingRenderer>().InSingletonScope();
 
-			this.Bind<IApplicationContextFactory>().To<ApplicationContextFactory>().InSingletonScope();
+			this.Bind<IFractalContextFactory>().To<FractalContextFactory>().InSingletonScope();
 			this.Bind<IUndoStack>().To<UndoStack>().InSingletonScope();
 			this.Bind<IParameterActionFactory>().To<ParameterActionFactory>();
 		}

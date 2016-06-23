@@ -5,10 +5,11 @@ namespace Mandelbrot.UI.Actions
 {
 	using System.Linq.Expressions;
 	using System.Reflection;
+	using Mandelbrot.Domain.Fascade;
 
 	public class ChangeParameterSelectionAction<T> : IAction
 	{
-		private readonly IApplicationContext context;
+		private readonly IFractalContext context;
 
 		private readonly PropertyInfo targetProperty;
 
@@ -17,8 +18,8 @@ namespace Mandelbrot.UI.Actions
 		private T oldValue;
 
 		public ChangeParameterSelectionAction(
-			IApplicationContext context,
-			Expression<Func<IApplicationContext, T>> targetPropertyExpression,
+			IFractalContext context,
+			Expression<Func<IFractalContext, T>> targetPropertyExpression,
 			T newValue)
 		{
 			this.context = context;
@@ -61,7 +62,7 @@ namespace Mandelbrot.UI.Actions
 			this.targetProperty.SetValue(this.context, value);
 		}
 
-		private static PropertyInfo ResolveTargetProperty(Expression<Func<IApplicationContext, T>> targetPropertyExpression )
+		private static PropertyInfo ResolveTargetProperty(Expression<Func<IFractalContext, T>> targetPropertyExpression )
 		{
 			var memberExpression = (MemberExpression)targetPropertyExpression.Body;
 			return (PropertyInfo)memberExpression.Member;

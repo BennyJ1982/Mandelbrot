@@ -1,14 +1,15 @@
 ﻿namespace Mandelbrot.UI.Actions
 {
 	using Mandelbrot.Domain.Calculation.Algorithms;
+	using Mandelbrot.Domain.Fascade;
 	using Mandelbrot.Domain.Rendering.Shaders;
 
 	public interface IParameterActionFactory
 	{
-		IAction CreateChangeAlgorithmAction(IApplicationContext context, IFractalAlgorithm algorithm);
+		IAction CreateChangeAlgorithmAction(IFractalContext context, IFractalAlgorithm algorithm);
 
-		IAction CreateChangeShaderAction(IApplicationContext context, IShader shader);
+		IAction CreateChangeShaderAction(IFractalContext context, IShader shader);
 
-		IAction CreateChangeIterationsAction(IApplicationContext context, int iterations);
+		IAction CreateChangeIterationsAction(IFractalContext context, int iterations);
 	}
 }

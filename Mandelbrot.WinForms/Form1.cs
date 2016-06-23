@@ -4,8 +4,8 @@
 	using System.Windows.Forms;
 	using Mandelbrot.Domain;
 	using Mandelbrot.Domain.Calculation.Algorithms;
+	using Mandelbrot.Domain.Fascade;
 	using Mandelbrot.Domain.Rendering.Shaders;
-	using Mandelbrot.UI;
 	using Mandelbrot.UI.Actions;
 
 	public partial class Form1 : Form
@@ -18,12 +18,12 @@
 
 		private readonly IParameterActionFactory parameterActionFactory;
 
-		private readonly IApplicationContext context;
+		private readonly IFractalContext context;
 
 		public Form1(
 			IAlgorithmRegistry algorithmRegistry,
 			IShaderRegistry shaderRegistry,
-			IApplicationContextFactory contextFactory,
+			IFractalContextFactory contextFactory,
 			IUndoStack undoStack,
 			IParameterActionFactory parameterActionFactory)
 		{
