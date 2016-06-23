@@ -1,6 +1,7 @@
 ﻿namespace Mandelbrot.Clients.Main
 {
 	using Mandelbrot.Domain.Jobs;
+	using Mandelbrot.UI;
 
 	public class ApplicationContextFactory : IApplicationContextFactory
 	{

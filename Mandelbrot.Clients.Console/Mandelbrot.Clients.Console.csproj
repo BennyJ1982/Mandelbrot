@@ -80,6 +80,10 @@
       <Project>{FBDEF0A3-A283-479C-80BF-7AA7B77027A7}</Project>
       <Name>Mandelbrot.Domain.Rendering.Interface</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Mandelbrot.UI.Interface\Mandelbrot.UI.Interface.csproj">
+      <Project>{E791BA8B-BF2B-4590-988B-667B00437C5B}</Project>
+      <Name>Mandelbrot.UI.Interface</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

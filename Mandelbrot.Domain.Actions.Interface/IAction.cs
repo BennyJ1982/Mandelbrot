@@ -1,13 +1,15 @@
-﻿namespace Mandelbrot.Domain.Actions
+﻿namespace Mandelbrot.UI.Actions
 {
+	using System.Threading.Tasks;
+
 	public interface IAction
 	{
 		string Name { get; }
 
 		bool CanUndo { get; }
 
-		void Do();
+		Task DoAsync();
 
-		void Undo();
+		Task UndoAsync();
 	}
 }

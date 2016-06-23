@@ -30,7 +30,6 @@
 		{
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
 			this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-			this.Screen = new Mandelbrot.Clients.WinForms.PictureBoxScreen();
 			this.toolStrip1 = new System.Windows.Forms.ToolStrip();
 			this.drawButton = new System.Windows.Forms.ToolStripButton();
 			this.cancelButton = new System.Windows.Forms.ToolStripButton();
@@ -42,9 +41,13 @@
 			this.shaderComboBox = new System.Windows.Forms.ToolStripComboBox();
 			this.toolStripLabel2 = new System.Windows.Forms.ToolStripLabel();
 			this.iterationsComboBox = new System.Windows.Forms.ToolStripComboBox();
+			this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+			this.redoButton = new System.Windows.Forms.ToolStripButton();
+			this.undoButton = new System.Windows.Forms.ToolStripButton();
+			this.Screen = new Mandelbrot.Clients.WinForms.PictureBoxScreen();
 			this.tableLayoutPanel1.SuspendLayout();
-			((System.ComponentModel.ISupportInitialize)(this.Screen)).BeginInit();
 			this.toolStrip1.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)(this.Screen)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// tableLayoutPanel1
@@ -62,22 +65,15 @@
 			this.tableLayoutPanel1.Size = new System.Drawing.Size(937, 561);
 			this.tableLayoutPanel1.TabIndex = 2;
 			// 
-			// Screen
-			// 
-			this.Screen.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.Screen.Location = new System.Drawing.Point(3, 28);
-			this.Screen.Name = "Screen";
-			this.Screen.Size = new System.Drawing.Size(931, 530);
-			this.Screen.TabIndex = 1;
-			this.Screen.TabStop = false;
-			this.Screen.MouseUp += new System.Windows.Forms.MouseEventHandler(this.OnScreenMouseUp);
-			// 
 			// toolStrip1
 			// 
 			this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.drawButton,
             this.cancelButton,
             this.resetButton,
+            this.toolStripSeparator2,
+            this.undoButton,
+            this.redoButton,
             this.toolStripSeparator1,
             this.toolStripLabel3,
             this.fractalComboBox,
@@ -176,6 +172,43 @@
 			this.iterationsComboBox.Size = new System.Drawing.Size(121, 25);
 			this.iterationsComboBox.SelectedIndexChanged += new System.EventHandler(this.OnIterationsChanged);
 			// 
+			// toolStripSeparator2
+			// 
+			this.toolStripSeparator2.Name = "toolStripSeparator2";
+			this.toolStripSeparator2.Size = new System.Drawing.Size(6, 25);
+			// 
+			// redoButton
+			// 
+			this.redoButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+			this.redoButton.Enabled = false;
+			this.redoButton.Image = ((System.Drawing.Image)(resources.GetObject("redoButton.Image")));
+			this.redoButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+			this.redoButton.Name = "redoButton";
+			this.redoButton.Size = new System.Drawing.Size(38, 22);
+			this.redoButton.Text = "Redo";
+			this.redoButton.Click += new System.EventHandler(this.OnRedo);
+			// 
+			// undoButton
+			// 
+			this.undoButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+			this.undoButton.Enabled = false;
+			this.undoButton.Image = ((System.Drawing.Image)(resources.GetObject("undoButton.Image")));
+			this.undoButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+			this.undoButton.Name = "undoButton";
+			this.undoButton.Size = new System.Drawing.Size(40, 22);
+			this.undoButton.Text = "Undo";
+			this.undoButton.Click += new System.EventHandler(this.OnUndo);
+			// 
+			// Screen
+			// 
+			this.Screen.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.Screen.Location = new System.Drawing.Point(3, 28);
+			this.Screen.Name = "Screen";
+			this.Screen.Size = new System.Drawing.Size(931, 530);
+			this.Screen.TabIndex = 1;
+			this.Screen.TabStop = false;
+			this.Screen.MouseUp += new System.Windows.Forms.MouseEventHandler(this.OnScreenMouseUp);
+			// 
 			// Form1
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -186,9 +219,9 @@
 			this.Text = "Form1";
 			this.tableLayoutPanel1.ResumeLayout(false);
 			this.tableLayoutPanel1.PerformLayout();
-			((System.ComponentModel.ISupportInitialize)(this.Screen)).EndInit();
 			this.toolStrip1.ResumeLayout(false);
 			this.toolStrip1.PerformLayout();
+			((System.ComponentModel.ISupportInitialize)(this.Screen)).EndInit();
 			this.ResumeLayout(false);
 
 		}
@@ -207,6 +240,9 @@
 		private System.Windows.Forms.ToolStripLabel toolStripLabel3;
 		private System.Windows.Forms.ToolStripComboBox fractalComboBox;
 		private System.Windows.Forms.ToolStripButton cancelButton;
+		private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
+		private System.Windows.Forms.ToolStripButton undoButton;
+		private System.Windows.Forms.ToolStripButton redoButton;
 	}
 }
 

@@ -1,6 +1,8 @@
-﻿namespace Mandelbrot.Domain.Actions
+﻿namespace Mandelbrot.UI.Actions
 {
+	using System;
 	using System.Collections.Generic;
+	using System.Threading.Tasks;
 
 	public class UndoStack : IUndoStack
 	{
@@ -13,25 +15,30 @@
 			{
 				this.undoStack.Push(action);
 				this.redoStack.Clear();
+				this.StackChanged?.Invoke(this, EventArgs.Empty);
 			}
 		}
 
-		public void UndoLatest()
+		public async Task UndoLatest()
 		{
 			var action = this.undoStack.Pop();
-			action.Undo();
+			await action.UndoAsync();
 			this.redoStack.Push(action);
+			this.StackChanged?.Invoke(this, EventArgs.Empty);
 		}
 
-		public void RedoLatest()
+		public async Task RedoLatest()
 		{
 			var action = this.redoStack.Pop();
-			action.Do();
+			await action.DoAsync();
 			this.undoStack.Push(action);
+			this.StackChanged?.Invoke(this, EventArgs.Empty);
 		}
 
 		public bool CanUndo() => this.undoStack.Count > 0;
 
-		public bool CanRedo() => this.redoStack.Count > 0;	
+		public bool CanRedo() => this.redoStack.Count > 0;
+
+		public event EventHandler<EventArgs> StackChanged;
 	}
 }

@@ -9,6 +9,7 @@ namespace Mandelbrot.Clients.Main
 	using Mandelbrot.Domain.Jobs;
 	using Mandelbrot.Domain.Rendering.Output;
 	using Mandelbrot.Domain.Rendering.Shaders;
+	using Mandelbrot.UI;
 
 	public class ApplicationContext : IApplicationContext
 	{
@@ -29,7 +30,7 @@ namespace Mandelbrot.Clients.Main
 			this.MaxIterations = 100;
 		}
 
-		public Rectangle<decimal> CurrentFractalRect { get; private set; }
+		public Rectangle<decimal> CurrentFractalRect { get; set; }
 
 		public IJobResult LastJobResult { get; private set; }
 

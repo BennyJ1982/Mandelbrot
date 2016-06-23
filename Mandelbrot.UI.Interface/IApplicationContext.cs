@@ -1,4 +1,4 @@
-﻿namespace Mandelbrot.Clients.Main
+﻿namespace Mandelbrot.UI
 {
 	using System;
 	using System.Threading.Tasks;
@@ -10,7 +10,7 @@
 
 	public interface IApplicationContext
 	{
-		Rectangle<decimal> CurrentFractalRect { get; }
+		Rectangle<decimal> CurrentFractalRect { get; set; }
 
 		IJobResult LastJobResult { get; }
 

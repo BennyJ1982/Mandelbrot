@@ -2,10 +2,11 @@
 {
 	using System;
 	using System.Windows.Forms;
-	using Mandelbrot.Clients.Main;
 	using Mandelbrot.Domain;
 	using Mandelbrot.Domain.Calculation.Algorithms;
 	using Mandelbrot.Domain.Rendering.Shaders;
+	using Mandelbrot.UI;
+	using Mandelbrot.UI.Actions;
 
 	public partial class Form1 : Form
 	{
@@ -13,12 +14,24 @@
 
 		private readonly IShaderRegistry shaderRegistry;
 
+		private readonly IUndoStack undoStack;
+
+		private readonly IParameterActionFactory parameterActionFactory;
+
 		private readonly IApplicationContext context;
 
-		public Form1(IAlgorithmRegistry algorithmRegistry, IShaderRegistry shaderRegistry, IApplicationContextFactory contextFactory)
+		public Form1(
+			IAlgorithmRegistry algorithmRegistry,
+			IShaderRegistry shaderRegistry,
+			IApplicationContextFactory contextFactory,
+			IUndoStack undoStack,
+			IParameterActionFactory parameterActionFactory)
 		{
 			this.algorithmRegistry = algorithmRegistry;
 			this.shaderRegistry = shaderRegistry;
+			this.undoStack = undoStack;
+			this.parameterActionFactory = parameterActionFactory;
+			this.undoStack.StackChanged += this.OnUndoSackChanged;
 
 			this.context = contextFactory.Create();
 			this.context.StatusChanged += this.OnStatusChanged;
@@ -46,7 +59,9 @@
 
 		private async void OnDraw(object sender, EventArgs e)
 		{
-			await this.context.DrawFractalAsync(this.Screen);
+			var drawAction = new DrawAction(this.context, this.Screen);
+			await drawAction.DoAsync();
+			this.undoStack.PushIfPossibe(drawAction);
 		}
 
 		private void OnCancel(object sender, EventArgs e)
@@ -71,7 +86,9 @@
 				e.X + frameWidth / 2 - 1,
 				e.Y + frameHeight / 2 - 1);
 
-			await this.context.ZoomInAsync(this.Screen, screenSelection);
+			var zoomInAction = new ZoomInAction(this.context, screenSelection, this.Screen);
+			await zoomInAction.DoAsync();
+			this.undoStack.PushIfPossibe(zoomInAction);
 		}
 
 		private void OnStatusChanged(object sender, StatusEventArgs e)
@@ -86,20 +103,44 @@
 			this.cancelButton.Enabled = isDrawing;
 		}
 
-		private void OnFractalSelectionChanged(object sender, EventArgs e)
+		private async void OnUndo(object sender, EventArgs e)
 		{
-			this.context.CurrentAlgorithm = (IFractalAlgorithm)this.fractalComboBox.SelectedItem;
+			await this.undoStack.UndoLatest();
+		}
+
+		private async void OnRedo(object sender, EventArgs e)
+		{
+			await this.undoStack.RedoLatest();
+		}
+
+		private void OnUndoSackChanged(object sender, EventArgs e)
+		{
+			this.undoButton.Enabled = this.undoStack.CanUndo();
+			this.redoButton.Enabled = this.undoStack.CanRedo();
+		}
+
+		private async void OnFractalSelectionChanged(object sender, EventArgs e)
+		{
+			var action = this.parameterActionFactory.CreateChangeAlgorithmAction(this.context, (IFractalAlgorithm)this.fractalComboBox.SelectedItem);
+			await action.DoAsync();
+			this.undoStack.PushIfPossibe(action);
 			this.context.ResetFractalRect();
 		}
 		
-		private void OnShaderChanged(object sender, EventArgs e)
+		private async void OnShaderChanged(object sender, EventArgs e)
 		{
-			this.context.CurrentShader = (IShader)this.shaderComboBox.SelectedItem;
+			var action = this.parameterActionFactory.CreateChangeShaderAction(this.context, (IShader)this.shaderComboBox.SelectedItem);
+			await action.DoAsync();
+			this.undoStack.PushIfPossibe(action);
 		}
 
-		private void OnIterationsChanged(object sender, EventArgs e)
+		private async void OnIterationsChanged(object sender, EventArgs e)
 		{
-			this.context.MaxIterations = Convert.ToInt32(this.iterationsComboBox.SelectedItem.ToString()); 
+			var action = this.parameterActionFactory.CreateChangeIterationsAction(
+				this.context,
+				Convert.ToInt32(this.iterationsComboBox.SelectedItem.ToString()));
+			await action.DoAsync();
+			this.undoStack.PushIfPossibe(action);
 		}
 	}
 }

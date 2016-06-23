@@ -2,10 +2,10 @@
 {
 	using System.Linq;
 	using System.Threading.Tasks;
-	using Mandelbrot.Clients.Main;
 	using Mandelbrot.Domain;
 	using Mandelbrot.Domain.Calculation.Algorithms;
 	using Mandelbrot.Domain.Rendering.Shaders;
+	using Mandelbrot.UI;
 
 	public class ConsoleRenderer
 	{

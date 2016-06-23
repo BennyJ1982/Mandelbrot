@@ -1,4 +1,4 @@
-﻿namespace Mandelbrot.Clients.Main
+﻿namespace Mandelbrot.UI
 {
 	public interface IApplicationContextFactory
 	{

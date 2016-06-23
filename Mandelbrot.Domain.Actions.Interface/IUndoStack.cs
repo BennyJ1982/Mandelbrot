@@ -1,15 +1,20 @@
-﻿namespace Mandelbrot.Domain.Actions
+﻿namespace Mandelbrot.UI.Actions
 {
+	using System;
+	using System.Threading.Tasks;
+
 	public interface IUndoStack
 	{
 		void PushIfPossibe(IAction action);
 
-		void UndoLatest();
+		Task UndoLatest();
 
-		void RedoLatest();
+		Task RedoLatest();
 
 		bool CanUndo();
 
 		bool CanRedo();
+
+		event EventHandler<EventArgs> StackChanged;
 	}
 }

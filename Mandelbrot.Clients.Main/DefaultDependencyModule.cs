@@ -8,6 +8,8 @@
 	using Mandelbrot.Domain.Rendering.Bitmaps;
 	using Mandelbrot.Domain.Rendering.Shaders;
 	using Mandelbrot.Domain.Rendering.Specifications;
+	using Mandelbrot.UI;
+	using Mandelbrot.UI.Actions;
 	using Ninject;
 	using Ninject.Activation;
 	using Ninject.Modules;
@@ -30,7 +32,9 @@
 			this.Bind<IRenderer>().To<ShadingRenderer>().InSingletonScope();
 			this.Bind<IRenderer>().To<CalculatingRenderer>().InSingletonScope();
 
-			this.Bind<IApplicationContextFactory>().To<ApplicationContextFactory>();
+			this.Bind<IApplicationContextFactory>().To<ApplicationContextFactory>().InSingletonScope();
+			this.Bind<IUndoStack>().To<UndoStack>().InSingletonScope();
+			this.Bind<IParameterActionFactory>().To<ParameterActionFactory>();
 		}
 
 		private static void RegisterFractalAlgorithms(IAlgorithmRegistry registry)

@@ -47,15 +47,20 @@
     <Compile Include="ApplicationContext.cs" />
     <Compile Include="ApplicationContextFactory.cs" />
     <Compile Include="DefaultDependencyModule.cs" />
-    <Compile Include="IApplicationContext.cs" />
-    <Compile Include="IApplicationContextFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="StatusEventArgs.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Mandelbrot.Domain.Actions.Interface\Mandelbrot.UI.Actions.Interface.csproj">
+      <Project>{C7CAB892-CAD0-47E4-9C24-9B683446173E}</Project>
+      <Name>Mandelbrot.UI.Actions.Interface</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Mandelbrot.Domain.Actions\Mandelbrot.UI.Actions.csproj">
+      <Project>{F74B8017-51EF-4ACC-A574-7ABE7B0AE72A}</Project>
+      <Name>Mandelbrot.UI.Actions</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Mandelbrot.Domain.Calculation.Interface\Mandelbrot.Domain.Calculation.Interface.csproj">
       <Project>{EB660F3D-E5F5-48C8-855C-2D1C0385EE5A}</Project>
       <Name>Mandelbrot.Domain.Calculation.Interface</Name>
@@ -83,6 +88,10 @@
     <ProjectReference Include="..\Mandelbrot.Domain.Rendering\Mandelbrot.Domain.Rendering.csproj">
       <Project>{06E41734-61DB-44C1-B13C-A0E559144B21}</Project>
       <Name>Mandelbrot.Domain.Rendering</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Mandelbrot.UI.Interface\Mandelbrot.UI.Interface.csproj">
+      <Project>{E791BA8B-BF2B-4590-988B-667B00437C5B}</Project>
+      <Name>Mandelbrot.UI.Interface</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

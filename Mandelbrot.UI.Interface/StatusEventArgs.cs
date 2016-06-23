@@ -1,7 +1,7 @@
-﻿using System;
-
-namespace Mandelbrot.Clients.Main
+﻿namespace Mandelbrot.UI
 {
+	using System;
+
 	public class StatusEventArgs : EventArgs
 	{
 		public StatusEventArgs(bool isCalculating)
