@@ -40,6 +40,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ActionDispatcher.cs" />
     <Compile Include="ChangeParameterSelectionAction.cs" />
     <Compile Include="DrawAction.cs" />
     <Compile Include="ParameterActionFactory.cs" />
