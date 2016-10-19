@@ -1,7 +1,9 @@
 ﻿namespace Mandelbrot.Domain.Fascade
 {
+	using Mandelbrot.Domain.Rendering.Output;
+
 	public interface IFractalContextFactory
 	{
-		IFractalContext Create();
+		IFractalContext Create(IScreen screen);
 	}
 }

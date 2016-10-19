@@ -1,5 +1,7 @@
 ﻿namespace Mandelbrot.Clients.WinForms
 {
+	using Mandelbrot.Clients.WinForms.Controls;
+
 	partial class Form1
 	{
 		/// <summary>
@@ -36,15 +38,15 @@
 			this.resetButton = new System.Windows.Forms.ToolStripButton();
 			this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
 			this.toolStripLabel3 = new System.Windows.Forms.ToolStripLabel();
-			this.fractalComboBox = new System.Windows.Forms.ToolStripComboBox();
+			this.fractalComboBox = new BindableToolStripComboBox();
 			this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
-			this.shaderComboBox = new System.Windows.Forms.ToolStripComboBox();
+			this.shaderComboBox = new BindableToolStripComboBox();
 			this.toolStripLabel2 = new System.Windows.Forms.ToolStripLabel();
-			this.iterationsComboBox = new System.Windows.Forms.ToolStripComboBox();
+			this.iterationsComboBox = new BindableToolStripComboBox();
 			this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
 			this.redoButton = new System.Windows.Forms.ToolStripButton();
 			this.undoButton = new System.Windows.Forms.ToolStripButton();
-			this.Screen = new Mandelbrot.Clients.WinForms.PictureBoxScreen();
+			this.Screen = new PictureBoxScreen();
 			this.tableLayoutPanel1.SuspendLayout();
 			this.toolStrip1.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.Screen)).BeginInit();
@@ -68,19 +70,19 @@
 			// toolStrip1
 			// 
 			this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.drawButton,
-            this.cancelButton,
-            this.resetButton,
-            this.toolStripSeparator2,
-            this.undoButton,
-            this.redoButton,
-            this.toolStripSeparator1,
-            this.toolStripLabel3,
-            this.fractalComboBox,
-            this.toolStripLabel1,
-            this.shaderComboBox,
-            this.toolStripLabel2,
-            this.iterationsComboBox});
+			this.drawButton,
+			this.cancelButton,
+			this.resetButton,
+			this.toolStripSeparator2,
+			this.undoButton,
+			this.redoButton,
+			this.toolStripSeparator1,
+			this.toolStripLabel3,
+			this.fractalComboBox,
+			this.toolStripLabel1,
+			this.shaderComboBox,
+			this.toolStripLabel2,
+			this.iterationsComboBox});
 			this.toolStrip1.Location = new System.Drawing.Point(0, 0);
 			this.toolStrip1.Name = "toolStrip1";
 			this.toolStrip1.Size = new System.Drawing.Size(937, 25);
@@ -156,18 +158,6 @@
 			// iterationsComboBox
 			// 
 			this.iterationsComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-			this.iterationsComboBox.Items.AddRange(new object[] {
-            "8",
-            "9",
-            "10",
-            "11",
-            "12",
-            "100",
-            "200",
-            "500",
-            "1000",
-            "5000",
-            "10000"});
 			this.iterationsComboBox.Name = "iterationsComboBox";
 			this.iterationsComboBox.Size = new System.Drawing.Size(121, 25);
 			this.iterationsComboBox.SelectedIndexChanged += new System.EventHandler(this.OnIterationsChanged);
@@ -233,12 +223,12 @@
 		private System.Windows.Forms.ToolStripButton drawButton;
 		private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
 		private System.Windows.Forms.ToolStripLabel toolStripLabel1;
-		private System.Windows.Forms.ToolStripComboBox shaderComboBox;
+		private BindableToolStripComboBox shaderComboBox;
 		private System.Windows.Forms.ToolStripButton resetButton;
 		private System.Windows.Forms.ToolStripLabel toolStripLabel2;
-		private System.Windows.Forms.ToolStripComboBox iterationsComboBox;
+		private BindableToolStripComboBox iterationsComboBox;
 		private System.Windows.Forms.ToolStripLabel toolStripLabel3;
-		private System.Windows.Forms.ToolStripComboBox fractalComboBox;
+		private BindableToolStripComboBox fractalComboBox;
 		private System.Windows.Forms.ToolStripButton cancelButton;
 		private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
 		private System.Windows.Forms.ToolStripButton undoButton;

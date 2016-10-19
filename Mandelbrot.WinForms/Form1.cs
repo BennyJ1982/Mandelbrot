@@ -1,6 +1,8 @@
 ﻿namespace Mandelbrot.Clients.WinForms
 {
 	using System;
+	using System.Linq.Expressions;
+	using System.Threading.Tasks;
 	using System.Windows.Forms;
 	using Mandelbrot.Domain;
 	using Mandelbrot.Domain.Calculation.Algorithms;
@@ -27,30 +29,25 @@
 			IUndoStack undoStack,
 			IParameterActionFactory parameterActionFactory)
 		{
+			this.InitializeComponent();
+
 			this.algorithmRegistry = algorithmRegistry;
 			this.shaderRegistry = shaderRegistry;
 			this.undoStack = undoStack;
 			this.parameterActionFactory = parameterActionFactory;
 			this.undoStack.StackChanged += this.OnUndoSackChanged;
 
-			this.context = contextFactory.Create();
+			this.context = contextFactory.Create(this.Screen);
 			this.context.StatusChanged += this.OnStatusChanged;
 
-			this.InitializeComponent();
 			this.InitializeOptions();
 		}
 
 		private void InitializeOptions()
 		{
-			foreach (var algorithm in this.algorithmRegistry.GetAll())
-			{
-				this.fractalComboBox.Items.Add(algorithm);
-			}
-
-			foreach (var shader in this.shaderRegistry.GetAll())
-			{
-				this.shaderComboBox.Items.Add(shader);
-			}
+			this.fractalComboBox.ItemsSource = this.algorithmRegistry.GetAll();
+			this.shaderComboBox.ItemsSource = this.shaderRegistry.GetAll();
+			this.iterationsComboBox.ItemsSource = new[] { 8, 9, 10, 11, 12, 100, 200, 500, 1000, 5000, 10000 };
 
 			this.fractalComboBox.SelectedIndex = 0;
 			this.shaderComboBox.SelectedIndex = 0;
@@ -59,7 +56,7 @@
 
 		private async void OnDraw(object sender, EventArgs e)
 		{
-			var drawAction = new DrawAction(this.context, this.Screen);
+			var drawAction = new DrawAction(this.context);
 			await drawAction.DoAsync();
 			this.undoStack.PushIfPossibe(drawAction);
 		}
@@ -72,7 +69,7 @@
 		private async void OnReset(object sender, EventArgs e)
 		{
 			this.context.ResetFractalRect();
-			await this.context.DrawFractalAsync(this.Screen);
+			await this.context.DrawFractalAsync();
 		}
 
 		private async void OnScreenMouseUp(object sender, MouseEventArgs e)
@@ -86,7 +83,7 @@
 				e.X + frameWidth / 2 - 1,
 				e.Y + frameHeight / 2 - 1);
 
-			var zoomInAction = new ZoomInAction(this.context, screenSelection, this.Screen);
+			var zoomInAction = new ZoomInAction(this.context, screenSelection);
 			await zoomInAction.DoAsync();
 			this.undoStack.PushIfPossibe(zoomInAction);
 		}
@@ -121,24 +118,28 @@
 
 		private async void OnFractalSelectionChanged(object sender, EventArgs e)
 		{
-			var action = this.parameterActionFactory.CreateChangeAlgorithmAction(this.context, (IFractalAlgorithm)this.fractalComboBox.SelectedItem);
-			await action.DoAsync();
-			this.undoStack.PushIfPossibe(action);
+			await this.HandleParameterComboboxChange<IFractalAlgorithm>(sender, factory => factory.CreateChangeAlgorithmAction);
 			this.context.ResetFractalRect();
 		}
-		
+
 		private async void OnShaderChanged(object sender, EventArgs e)
 		{
-			var action = this.parameterActionFactory.CreateChangeShaderAction(this.context, (IShader)this.shaderComboBox.SelectedItem);
-			await action.DoAsync();
-			this.undoStack.PushIfPossibe(action);
+			await this.HandleParameterComboboxChange<IShader>(sender, factory => factory.CreateChangeShaderAction);
 		}
 
 		private async void OnIterationsChanged(object sender, EventArgs e)
 		{
-			var action = this.parameterActionFactory.CreateChangeIterationsAction(
-				this.context,
-				Convert.ToInt32(this.iterationsComboBox.SelectedItem.ToString()));
+			await this.HandleParameterComboboxChange<int>(sender, factory => factory.CreateChangeIterationsAction);
+		}
+
+		private async Task HandleParameterComboboxChange<T>(
+			object sender,
+			Expression<Func<IParameterActionFactory, Func<IFractalContext, T, IAction>>> actionFactory)
+		{
+			var comboBox = (ToolStripComboBox)sender;
+			var selectedItem = (T)comboBox.SelectedItem;
+			var action = actionFactory.Compile()(this.parameterActionFactory)(this.context, selectedItem);
+
 			await action.DoAsync();
 			this.undoStack.PushIfPossibe(action);
 		}

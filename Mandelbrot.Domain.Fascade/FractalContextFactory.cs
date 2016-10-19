@@ -1,6 +1,7 @@
 ﻿namespace Mandelbrot.Domain.Fascade
 {
 	using Mandelbrot.Domain.Jobs;
+	using Mandelbrot.Domain.Rendering.Output;
 
 	public class FractalContextFactory : IFractalContextFactory
 	{
@@ -14,9 +15,9 @@
 			this.jobRunner = jobRunner;
 		}
 
-		public IFractalContext Create()
+		public IFractalContext Create(IScreen screen)
 		{
-			return new FractalContext(this.jobFactory, this.jobRunner, maxDegreeOfParalellelism: 8);
+			return new FractalContext(this.jobFactory, this.jobRunner, screen, maxDegreeOfParalellelism: 8);
 		}
 	}
 }

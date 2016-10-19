@@ -3,6 +3,7 @@ namespace Mandelbrot.Domain.Fascade
 	using System;
 	using System.Threading;
 	using System.Threading.Tasks;
+	using System.Xml.Linq;
 	using Mandelbrot.Domain.Calculation;
 	using Mandelbrot.Domain.Calculation.Algorithms;
 	using Mandelbrot.Domain.Jobs;
@@ -17,12 +18,15 @@ namespace Mandelbrot.Domain.Fascade
 
 		private readonly IJobRunner jobRunner;
 
+		private readonly IScreen screen;
+
 		private CancellationTokenSource cancellationTokenSource;
 
-		public FractalContext(IJobFactory jobFactory, IJobRunner jobRunner, int maxDegreeOfParalellelism)
+		public FractalContext(IJobFactory jobFactory, IJobRunner jobRunner, IScreen screen, int maxDegreeOfParalellelism)
 		{
 			this.jobFactory = jobFactory;
 			this.jobRunner = jobRunner;
+			this.screen = screen;
 			this.maxDegreeOfParalellelism = maxDegreeOfParalellelism;
 
 			this.MaxIterations = 100;
@@ -40,7 +44,7 @@ namespace Mandelbrot.Domain.Fascade
 
 		public event EventHandler<StatusEventArgs> StatusChanged;
 
-		public async Task DrawFractalAsync(IScreen screen)
+		public async Task DrawFractalAsync()
 		{
 			if (this.CurrentAlgorithm == null)
 			{
@@ -61,8 +65,9 @@ namespace Mandelbrot.Domain.Fascade
 
 			try
 			{
-				var job = this.CreateJob(this.GetCurrentFractalSettings(screen), this.CurrentShader);
-				this.LastJobResult = await this.jobRunner.ExecuteAsync(job, screen, this.maxDegreeOfParalellelism, this.cancellationTokenSource.Token);
+				var job = this.CreateJob(this.GetCurrentFractalSettings(), this.CurrentShader);
+				this.LastJobResult =
+					await this.jobRunner.ExecuteAsync(job, this.screen, this.maxDegreeOfParalellelism, this.cancellationTokenSource.Token);
 			}
 			catch (OperationCanceledException)
 			{
@@ -75,7 +80,7 @@ namespace Mandelbrot.Domain.Fascade
 			}
 		}
 
-		public async Task ZoomInAsync(IScreen screen, Rectangle<int> screenSelection)
+		public async Task ZoomInAsync(Rectangle<int> screenSelection)
 		{
 			if (this.CurrentAlgorithm == null)
 			{
@@ -92,8 +97,8 @@ namespace Mandelbrot.Domain.Fascade
 				throw new InvalidOperationException("Cannot zoom in before initial fractal has been drawn.");
 			}
 
-			this.CurrentFractalRect = screen.ScaleFractalRectToScreenSelection(this.CurrentFractalRect, screenSelection);
-			await this.DrawFractalAsync(screen);
+			this.CurrentFractalRect = this.screen.ScaleFractalRectToScreenSelection(this.CurrentFractalRect, screenSelection);
+			await this.DrawFractalAsync();
 		}
 
 		public void Cancel()
@@ -121,9 +126,9 @@ namespace Mandelbrot.Domain.Fascade
 			return this.jobFactory.Create(settings, shader, this.GetNumberOfSectors());
 		}
 
-		private FractalSettings GetCurrentFractalSettings(IScreen screen)
+		private FractalSettings GetCurrentFractalSettings()
 		{
-			return new FractalSettings(this.CurrentAlgorithm, screen.Width, screen.Height, this.CurrentFractalRect, this.MaxIterations);
+			return new FractalSettings(this.CurrentAlgorithm, this.screen.Width, this.screen.Height, this.CurrentFractalRect, this.MaxIterations);
 		}
 
 		private int GetNumberOfSectors()

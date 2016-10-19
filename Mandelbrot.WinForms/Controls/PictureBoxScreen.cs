@@ -1,4 +1,4 @@
-﻿namespace Mandelbrot.Clients.WinForms
+﻿namespace Mandelbrot.Clients.WinForms.Controls
 {
 	using System.Drawing.Drawing2D;
 	using System.Windows.Forms;

@@ -50,6 +50,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controls\BindableToolStripComboBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -57,7 +60,7 @@
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
     <Compile Include="GraphicsDrawingContext.cs" />
-    <Compile Include="PictureBoxScreen.cs">
+    <Compile Include="Controls\PictureBoxScreen.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Program.cs" />
