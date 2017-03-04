@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 
 namespace Mandelbrot.UI.Actions
 {
-	using Mandelbrot.Domain.Fascade;
+	using Mandelbrot.Domain.Facade;
 
 	public class DrawAction : IAction
 	{

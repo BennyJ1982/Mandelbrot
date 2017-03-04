@@ -6,7 +6,7 @@
 	using System.Windows.Forms;
 	using Mandelbrot.Domain;
 	using Mandelbrot.Domain.Calculation.Algorithms;
-	using Mandelbrot.Domain.Fascade;
+	using Mandelbrot.Domain.Facade;
 	using Mandelbrot.Domain.Rendering.Shaders;
 	using Mandelbrot.UI.Actions;
 

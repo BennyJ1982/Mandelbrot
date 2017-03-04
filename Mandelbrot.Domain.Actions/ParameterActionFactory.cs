@@ -1,7 +1,7 @@
 ﻿namespace Mandelbrot.UI.Actions
 {
 	using Mandelbrot.Domain.Calculation.Algorithms;
-	using Mandelbrot.Domain.Fascade;
+	using Mandelbrot.Domain.Facade;
 	using Mandelbrot.Domain.Rendering.Shaders;
 
 	public class ParameterActionFactory : IParameterActionFactory

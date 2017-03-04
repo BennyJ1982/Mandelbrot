@@ -5,7 +5,7 @@ namespace Mandelbrot.UI.Actions
 {
 	using System.Linq.Expressions;
 	using System.Reflection;
-	using Mandelbrot.Domain.Fascade;
+	using Mandelbrot.Domain.Facade;
 
 	public class ChangeParameterSelectionAction<T> : IAction
 	{

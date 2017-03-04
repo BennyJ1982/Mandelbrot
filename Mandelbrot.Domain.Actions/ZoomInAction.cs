@@ -2,7 +2,7 @@
 {
 	using System.Threading.Tasks;
 	using Mandelbrot.Domain;
-	using Mandelbrot.Domain.Fascade;
+	using Mandelbrot.Domain.Facade;
 
 	public class ZoomInAction : IAction
 	{

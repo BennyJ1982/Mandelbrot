@@ -1,4 +1,4 @@
-﻿namespace Mandelbrot.Domain.Fascade
+﻿namespace Mandelbrot.Domain.Facade
 {
 	using System;
 

@@ -3,7 +3,7 @@
 	using Mandelbrot.Domain.Calculation;
 	using Mandelbrot.Domain.Calculation.Algorithms;
 	using Mandelbrot.Domain.Calculation.Calculators;
-	using Mandelbrot.Domain.Fascade;
+	using Mandelbrot.Domain.Facade;
 	using Mandelbrot.Domain.Jobs;
 	using Mandelbrot.Domain.Rendering;
 	using Mandelbrot.Domain.Rendering.Bitmaps;

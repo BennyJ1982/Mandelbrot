@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25123.0
+# Visual Studio 15
+VisualStudioVersion = 15.0.26206.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mandelbrot", "Mandelbrot\Mandelbrot.csproj", "{8AB3FCAE-3D99-4E45-B8CF-349A2CF6CEAE}"
 EndProject
@@ -45,11 +45,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mandelbrot.UI.Interface", "
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Clients", "Clients", "{8B1D52C1-C054-4286-9AC4-352EB29E2F55}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Fascade", "Fascade", "{3DB9F0D2-BADD-4CCF-97F0-BFA8EDACD7F7}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Facade", "Facade", "{3DB9F0D2-BADD-4CCF-97F0-BFA8EDACD7F7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mandelbrot.Domain.Fascade.Interface", "Mandelbrot.Domain.Fascade.Interface\Mandelbrot.Domain.Fascade.Interface.csproj", "{2EB5A663-F29D-487A-B27E-0E19B8D32343}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mandelbrot.Domain.Facade.Interface", "Mandelbrot.Domain.Fascade.Interface\Mandelbrot.Domain.Facade.Interface.csproj", "{2EB5A663-F29D-487A-B27E-0E19B8D32343}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mandelbrot.Domain.Fascade", "Mandelbrot.Domain.Fascade\Mandelbrot.Domain.Fascade.csproj", "{2D3FF6D3-FA11-4EBA-81B9-E4A5C105277C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mandelbrot.Domain.Facade", "Mandelbrot.Domain.Fascade\Mandelbrot.Domain.Facade.csproj", "{2D3FF6D3-FA11-4EBA-81B9-E4A5C105277C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
