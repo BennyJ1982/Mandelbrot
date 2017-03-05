@@ -20,10 +20,10 @@
 		{
 			this.context = contextFactory.Create(screen);
 
-			// TODO: make configurable
-			this.context.CurrentAlgorithm = algorithmRegistry.GetAll().Reverse().Skip(1).First();
+            // TODO: make configurable
+            this.context.CurrentAlgorithm = algorithmRegistry.GetAll().First(r => r.ToString().StartsWith("Julia"));
 			this.context.CurrentShader = shaderRegistry.GetAll().First();
-			this.context.MaxIterations = 8;
+			this.context.MaxIterations = 1500;
 		}
 		
 		public void Cancel()

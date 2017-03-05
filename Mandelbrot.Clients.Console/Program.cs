@@ -1,7 +1,8 @@
 ﻿namespace Mandelbrot.Clients.Console
 {
 	using Mandelbrot.Clients.Main;
-	using Ninject;
+    using Mandelbrot.Domain.Rendering.Output;
+    using Ninject;
 
 	internal class Program
 	{
@@ -42,10 +43,11 @@
 		{
 			var kernel = new StandardKernel(new DefaultDependencyModule());
 			kernel.Bind<ConsoleDrawingContext>().ToSelf().InSingletonScope();
-			kernel.Bind<ConsoleScreen>().ToSelf().InSingletonScope();
+            kernel.Bind<ConsoleScreen, IScreen>().To<ConsoleScreen>().InSingletonScope();
 			kernel.Bind<InputController>().ToSelf().InSingletonScope();
+            kernel.Bind<ConsoleRenderer>().ToSelf().InSingletonScope();
 
-			return kernel;
+            return kernel;
 		}
 	}
 }

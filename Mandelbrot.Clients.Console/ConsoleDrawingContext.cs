@@ -12,7 +12,7 @@
 		{
 			for (var x = 0; x < targetRect.Width / bitmap.Width; x++)
 			{
-				this.DrawBitmapUnscaled(bitmap, new Point(x * bitmap.Width, targetRect.Top));
+				this.DrawBitmapUnscaled(bitmap, new Point(targetRect.Left +  x * bitmap.Width, targetRect.Top));
 			}
 		}
 
@@ -29,9 +29,9 @@
 
 						if (color.A != 0)
 						{
-							System.Console.SetCursorPosition(posX, y + targetPosition.Y);
-							System.Console.ForegroundColor = GetConsoleColor(color);
-							System.Console.Write('█');
+                            Console.SetCursorPosition(posX, y + targetPosition.Y);
+                            Console.ForegroundColor = GetConsoleColor(color);
+                            Console.Write('█');
 						}
 					}
 				}
