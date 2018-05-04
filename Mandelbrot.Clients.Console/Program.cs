@@ -14,8 +14,8 @@
 		{
 			ninjectKernel = CreateKernel();
 
-			System.Console.WindowWidth = 200;
-			System.Console.WindowHeight = 80;
+			System.Console.WindowWidth = (int)(System.Console.LargestWindowWidth * 0.8d);
+			System.Console.WindowHeight = (int)(System.Console.LargestWindowHeight * 0.8d);
 			System.Console.CursorSize = 100;
 
 			renderer = ninjectKernel.Get<ConsoleRenderer>();
