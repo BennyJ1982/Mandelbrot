@@ -2,13 +2,13 @@
 {
 	public class JuliaAlgorithm : PointBasedAlgorithmBase
 	{
-		private const decimal ConstantRealPart = -0.7m;
+		private const double ConstantRealPart = -0.7d;
 
-		private const decimal ConstantImaginaryPart = 0.27015m;
+		private const double ConstantImaginaryPart = 0.27015d;
 
-		private const decimal Cutoff = 4m; // circle with radius 2
+		private const double Cutoff = 4d; // circle with radius 2
 
-		public override Rectangle<decimal> DefaultScale => new Rectangle<decimal>(-1.5m, -1, 1.5m, 1);
+		public override Rectangle<double> DefaultScale => new Rectangle<double>(-1.5d, -1, 1.5d, 1);
 
 		public override double CalculateSinglePoint(int x, int y, IFractalSettings settings)
 		{
@@ -21,7 +21,7 @@
 
 		protected override string Name => "Julia Set";
 
-		private static int RunJuliaLoop(decimal scaledX, decimal scaledY, int maxIterations)
+		private static int RunJuliaLoop(double scaledX, double scaledY, int maxIterations)
 		{
 			var newRealPart = scaledX;
 			var newImaginaryPart = scaledY;

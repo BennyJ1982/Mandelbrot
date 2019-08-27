@@ -8,7 +8,7 @@
 
 	public interface IFractalContext
 	{
-		Rectangle<decimal> CurrentFractalRect { get; set; }
+		Rectangle<double> CurrentFractalRect { get; set; }
 
 		IJobResult LastJobResult { get; }
 

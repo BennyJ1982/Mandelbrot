@@ -79,10 +79,10 @@
 
 		private Tuple<Point<double>, Point<double>> GetInitialLine(IFractalSettings settings)
 		{
-			var xPos1 = (double)this.ScaleX(settings.ScreenWidth / 2m, settings);
+			var xPos1 = this.ScaleX(settings.ScreenWidth / 2d, settings);
 			var xPos2 = xPos1;
-			var yPos1 = (double)this.ScaleY(settings.ScreenHeight * 0.9m, settings);
-			var yPos2 = (double)this.ScaleY(settings.ScreenHeight * 0.6m, settings);
+			var yPos1 = this.ScaleY(settings.ScreenHeight * 0.9d, settings);
+			var yPos2 = this.ScaleY(settings.ScreenHeight * 0.6d, settings);
 
 			return Tuple.Create(new Point<double>(xPos1, yPos1), new Point<double>(xPos2, yPos2));
 		}

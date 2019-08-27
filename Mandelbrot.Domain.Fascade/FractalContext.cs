@@ -32,7 +32,7 @@ namespace Mandelbrot.Domain.Facade
 			this.MaxIterations = 100;
 		}
 
-		public Rectangle<decimal> CurrentFractalRect { get; set; }
+		public Rectangle<double> CurrentFractalRect { get; set; }
 
 		public IJobResult LastJobResult { get; private set; }
 

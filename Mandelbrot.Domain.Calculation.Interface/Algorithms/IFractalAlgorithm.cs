@@ -5,7 +5,7 @@
 
 	public interface IFractalAlgorithm
 	{
-		Rectangle<decimal> DefaultScale { get; }
+		Rectangle<double> DefaultScale { get; }
 
 		IEnumerable<ICalculationSpecification> GetCalculatableParts(IFractalSettings settings, int numberOfParts);
 	}

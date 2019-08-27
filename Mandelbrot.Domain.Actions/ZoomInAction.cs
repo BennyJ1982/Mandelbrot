@@ -10,7 +10,7 @@
 
 		private readonly Rectangle<int> selection;
 
-		private Rectangle<decimal> oldFractalRect;
+		private Rectangle<double> oldFractalRect;
 
 		public ZoomInAction(IFractalContext context, Rectangle<int> selection)
 		{

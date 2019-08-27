@@ -4,7 +4,7 @@
 
 	public class FractalSettings : IFractalSettings
 	{
-		public FractalSettings(IFractalAlgorithm algorithm, int screenWidth, int screenHeight, Rectangle<decimal> fractalRect, int maxIterations)
+		public FractalSettings(IFractalAlgorithm algorithm, int screenWidth, int screenHeight, Rectangle<double> fractalRect, int maxIterations)
 		{
 			this.Algorithm = algorithm;
 			this.FractalRect = fractalRect;
@@ -13,7 +13,7 @@
 			this.ScreenHeight = screenHeight;
 		}
 
-		public Rectangle<decimal> FractalRect { get; }
+		public Rectangle<double> FractalRect { get; }
 
 		public int ScreenWidth { get; }
 

@@ -1,24 +1,24 @@
 ﻿namespace Mandelbrot.Domain.Calculation.Algorithms
 {
-	public static class DecimalExtension
+	public static class DoubleExtension
 	{
-		public static decimal ScaleXToFractal(this decimal screenX, IFractalSettings settings)
+		public static double ScaleXToFractal(this double screenX, IFractalSettings settings)
 		{
 			return screenX.ScaleXToFractal(settings.FractalRect, settings.ScreenWidth);
 		}
 
-		public static decimal ScaleXToFractal(this decimal screenX, Rectangle<decimal> fractalRect, int screenWidth)
+		public static double ScaleXToFractal(this double screenX, Rectangle<double> fractalRect, int screenWidth)
 		{
 			var fractalWidth = fractalRect.Right - fractalRect.Left;
 			return fractalWidth / screenWidth * screenX + fractalRect.Left;
 		}
 
-		public static decimal ScaleYToFractal(this decimal screenY, IFractalSettings settings)
+		public static double ScaleYToFractal(this double screenY, IFractalSettings settings)
 		{
 			return screenY.ScaleYToFractal(settings.FractalRect, settings.ScreenHeight);
 		}
 
-		public static decimal ScaleYToFractal(this decimal screenY, Rectangle<decimal> fractalRect, int screenHeight)
+		public static double ScaleYToFractal(this double screenY, Rectangle<double> fractalRect, int screenHeight)
 		{
 			var fractalHeight = fractalRect.Bottom - fractalRect.Top;
 			return fractalHeight / screenHeight * screenY + fractalRect.Top;

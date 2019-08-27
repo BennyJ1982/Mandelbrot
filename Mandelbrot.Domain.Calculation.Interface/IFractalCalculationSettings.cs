@@ -2,7 +2,7 @@
 {
 	public interface IFractalCalculationSettings
 	{
-		Rectangle<decimal> FractalRect { get; }
+		Rectangle<double> FractalRect { get; }
 
 		int ScreenWidth { get; }
 		int ScreenHeight { get; }

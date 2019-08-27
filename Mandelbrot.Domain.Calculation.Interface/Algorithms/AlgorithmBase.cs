@@ -2,21 +2,21 @@
 {
 	public abstract class AlgorithmBase 
 	{
-		public abstract Rectangle<decimal> DefaultScale { get; }
+		public abstract Rectangle<double> DefaultScale { get; }
 
-		protected virtual decimal ScaleX(decimal x, IFractalSettings settings)
+		protected virtual double ScaleX(double x, IFractalSettings settings)
 		{
 			return x.ScaleXToFractal(settings);
 		}
 
-		protected virtual decimal ScaleY(decimal y, IFractalSettings settings)
+		protected virtual double ScaleY(double y, IFractalSettings settings)
 		{
 			return y.ScaleYToFractal(settings);
 		}
 
 		protected virtual Point<double> ScalePoint(Point<double> point, IFractalSettings settings)
 		{
-			return new Point<double>((double)this.ScaleX((decimal)point.X, settings), (double)this.ScaleY((decimal)point.Y, settings));
+			return new Point<double>(this.ScaleX(point.X, settings), this.ScaleY(point.Y, settings));
 		}
 
 		protected abstract string Name { get; }

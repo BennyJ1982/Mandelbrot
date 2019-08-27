@@ -41,7 +41,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Algorithms\AlgorithmBase.cs" />
-    <Compile Include="Algorithms\DecimalExtension.cs" />
+    <Compile Include="Algorithms\DoubleExtension.cs" />
     <Compile Include="Algorithms\IAlgorithmRegistry.cs" />
     <Compile Include="Algorithms\IFractalAlgorithm.cs" />
     <Compile Include="Algorithms\IPathBasedFractal.cs" />

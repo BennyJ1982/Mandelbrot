@@ -7,7 +7,7 @@
 
 	public abstract class PathBasedAlgorithmBase : AlgorithmBase, IPathBasedFractal
 	{
-		public override Rectangle<decimal> DefaultScale => new Rectangle<decimal>(0, 0, 1, 1);
+		public override Rectangle<double> DefaultScale => new Rectangle<double>(0, 0, 1, 1);
 
 		public abstract IEnumerable<ICalculationSpecification> GetCalculatableParts(IFractalSettings settings, int numberOfParts);
 
@@ -24,7 +24,7 @@
 			IFractalSettings settings,
 			CancellationToken cancellationToken);
 
-		protected override decimal ScaleX(decimal x, IFractalSettings settings)
+		protected override double ScaleX(double x, IFractalSettings settings)
 		{
 			var scaleFactor = 1 / (settings.FractalRect.Right - settings.FractalRect.Left);
 
@@ -34,7 +34,7 @@
 			return x;
 		}
 
-		protected override decimal ScaleY(decimal y, IFractalSettings settings)
+		protected override double ScaleY(double y, IFractalSettings settings)
 		{
 			var scaleFactor = 1 / (settings.FractalRect.Bottom - settings.FractalRect.Top);
 
